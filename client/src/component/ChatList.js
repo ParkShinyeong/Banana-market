@@ -6,7 +6,7 @@ import axios from 'axios';
 // socket 연결
 import io from 'socket.io-client';
 const endpoint = 'http://localhost:3001';
-const chatroom = `${endpoint}/chatroom`;
+const chatroom = `${process.env.REACT_APP_API_HTTP_URL}/chatroom`;
 const socket = io.connect(chatroom, {
   withCredentials: true,
 });
@@ -173,7 +173,12 @@ const ChatList = ({ chatRoomId, setChatRoomId, setTitle }) => {
     let title = document.getElementById(num).textContent;
     setTitle(title);
     setChatRoomId(Number(num));
-    console.log('방제받아오기', title, '방번호', e.target.getAttribute('data-value'));
+    console.log(
+      '방제받아오기',
+      title,
+      '방번호',
+      e.target.getAttribute('data-value')
+    );
   };
   // 채팅내용 불러오기
   useEffect(() => {

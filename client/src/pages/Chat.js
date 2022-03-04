@@ -8,7 +8,7 @@ import axios from 'axios';
 // socket 연결
 import io from 'socket.io-client';
 const endpoint = 'http://localhost:3001';
-const chatroom = `${endpoint}/chatroom`;
+const chatroom = `${process.env.REACT_APP_API_HTTP_URL}/chatroom`;
 const socket = io.connect(chatroom, {
   withCredentials: true,
 });
@@ -73,7 +73,6 @@ const Chat = () => {
     };
   }, []);
 
-
   // const onClick = () => {
   //   display === 'none' ? setDisplay('block') : setDisplay('none');
   //   display1 === 'block' ? setDisplay1('none') : setDisplay1('block');
@@ -87,15 +86,15 @@ const Chat = () => {
     <div className="section2">
       <ChatDiv>
         <ChatList
-          enterance ={enterance}
-          setEnterance ={setEnterance}
+          enterance={enterance}
+          setEnterance={setEnterance}
           chatRoomId={chatRoomId}
           setChatRoomId={setChatRoomId}
           setTitle={setTitle}
         ></ChatList>
         <ChatRoom
-          enterance ={enterance}
-          setEnterance ={setEnterance}
+          enterance={enterance}
+          setEnterance={setEnterance}
           chatRoomId={chatRoomId}
           setChatRoomId={setChatRoomId}
           title={title}
