@@ -9,7 +9,7 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLogin, setLogout } from '../redux/actions/actions';
 
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 const Login_div = styled.div`
   position: fixed;
@@ -164,10 +164,10 @@ const LoginModal = ({ loginModal, setLoginModal, handleResponseSuccess }) => {
           {
             email,
             password,
-          },
-          {
-            withCredentials: true,
           }
+          // {
+          //   withCredentials: true,
+          // }
         )
         .then((data) => {
           console.log(data);
