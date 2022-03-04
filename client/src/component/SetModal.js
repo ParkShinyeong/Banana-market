@@ -8,7 +8,7 @@ import axios from 'axios';
 // socket 연결
 import io from 'socket.io-client';
 const endpoint = 'http://localhost:3001';
-const chatroom = `${endpoint}/chatroom`;
+const chatroom = `${process.env.REACT_APP_API_URL}/chatroom`;
 const socket = io.connect(chatroom, {
   withCredentials: true,
 });
@@ -272,14 +272,12 @@ const SetModal = ({
         console.log(err);
       });
   };
-  
-
 
   //참가자 내보내기 버튼 클릭 handler
   const handleClickOutBtn = (e) => {
     let num = e.target.getAttribute('data-value');
     setOutUserId(num);
-    setOutBtn(true); 
+    setOutBtn(true);
   };
 
   //채팅방 내보내기 확인!! handler
@@ -290,7 +288,7 @@ const SetModal = ({
       if (error) console.log(error);
     });
     alert(`${obj.roomId}가 방에서 내보내졌습니다.`);
-    setOutBtn(false); 
+    setOutBtn(false);
     let participantList = participant;
     delete participantList[outUserId];
     setParticipant(participantList);
@@ -336,10 +334,10 @@ const SetModal = ({
     return person.isHost === '1';
   });
   // console.log('참가자', participant[0].isHost);
-  if( hostId.length === 0 ){
+  if (hostId.length === 0) {
     hostId = 1;
-  }else {
-    hostId = hostId[0].id 
+  } else {
+    hostId = hostId[0].id;
   }
   // 참가자 목록 편집
   // console.log(isHostId[Number(userId)].isHost);
@@ -412,7 +410,11 @@ const SetModal = ({
                   ></div>
                   {el.isHost === '1' ? null : (
                     <>
-                      <div className="user_out" data-value={el.id} onClick={handleClickOutBtn}>
+                      <div
+                        className="user_out"
+                        data-value={el.id}
+                        onClick={handleClickOutBtn}
+                      >
                         내보내기
                       </div>
                     </>
@@ -442,7 +444,12 @@ const SetModal = ({
           </div>
         )}
 
-        <div className="exit" onClick={() => {setExistBtn(true);}}>
+        <div
+          className="exit"
+          onClick={() => {
+            setExistBtn(true);
+          }}
+        >
           채팅방 나가기
         </div>
         {existBtn === true ? (
@@ -452,7 +459,12 @@ const SetModal = ({
             leaveRoom={leaveRoom}
           ></ExitModal>
         ) : null}
-        {outBtn === true ? <UserOut outRoomConfirm={outRoomConfirm} setOutBtn={setOutBtn}></UserOut> : null}
+        {outBtn === true ? (
+          <UserOut
+            outRoomConfirm={outRoomConfirm}
+            setOutBtn={setOutBtn}
+          ></UserOut>
+        ) : null}
         {declaration === true ? (
           <UserDeclaration
             setDeclaration={setDeclaration}
