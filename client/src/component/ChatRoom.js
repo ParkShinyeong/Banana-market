@@ -8,7 +8,7 @@ import axios from 'axios';
 // socket 연결
 import io from 'socket.io-client';
 const endpoint = 'http://localhost:3001';
-const chatroom = `${process.env.REACT_APP_API_URL}/chatroom`;
+const chatroom = `${process.env.REACT_APP_API_HTTP_URL}/chatroom`;
 const socket = io.connect(chatroom, {
   withCredentials: true,
 });
