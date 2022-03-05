@@ -52,19 +52,19 @@ function App(props) {
         }
         dispatch({ type: 'SET_UPDATE_USER_INFO', payload: res.data.data });
         dispatch(setLogin());
-       
-        if(setUserInfo.type === 'ADMIN'){
+
+        if (setUserInfo.type === 'ADMIN') {
           dispatch(setAdminLogin());
           console.log(setUserInfo.type);
-        } else if(setUserInfo.block){
+        } else if (setUserInfo.block) {
           dispatch(setLogout());
-          alert('정지된 유저 입니다!')
+          alert('정지된 유저 입니다!');
         }
       })
       .catch((err) => {
         dispatch(setLogout());
         dispatch({ type: 'SET_USER_INFO_NULL' });
-        if(setUserInfo.type === 'ADMIN'){
+        if (setUserInfo.type === 'ADMIN') {
           dispatch(setAdminLogout());
         }
       });
@@ -96,7 +96,7 @@ function App(props) {
   //리로딩시 로그인이 풀리지 않도록함.
   useEffect(() => {
     isGoogleAuthorizationCode();
-    handleResponseSuccess();
+    // handleResponseSuccess();
   }, []);
 
   // 로그아웃 버튼 클릭 시 진행되는 함수
