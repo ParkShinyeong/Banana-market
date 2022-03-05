@@ -123,13 +123,14 @@ const PostList = () => {
 
   // 카테고리 바꿀 시 요청 함수(List 컴포넌트에서 사용)  ------ 0 -> 1
   const handleFilterCategory = (event) => {
-    if (event.target.value === '전체') {
+    console.log(event.target.getAttribute('data-value'))
+    if (event.target.getAttribute('data-value') === '전체') {
       dispatch(postListReset());
       setCategoryData('');
       setPageNumber(0);
     } else {
       dispatch(postListReset());
-      setCategoryData(event.target.value);
+      setCategoryData(event.target.getAttribute('data-value'));
       setPageNumber(0);
     }
   };

@@ -56,6 +56,7 @@ const Wrapper = styled.div`
     border: 0px;
     background-color: #a1d026;
     color: #fbfff1;
+    cursor: pointer;
     /* border: 1px solid #eaeaea;
     background-color: #ececec;
     color: #aeaeae;

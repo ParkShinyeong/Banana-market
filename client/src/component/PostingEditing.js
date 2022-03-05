@@ -12,6 +12,235 @@ import bananalogo from '../icon/bananalogo.png';
 import give from '../icon/give.png';
 import axios from 'axios';
 
+// const MapModalWrapper = styled.div`
+//   position: fixed;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   left: 0;
+//   z-index: 100;
+//   @media only screen and (max-width: 768px) {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     z-index: 100;
+//     min-height: 960px;
+//   }
+// `;
+// const Wrapper = styled.div`
+//   max-width: 1200px;
+//   /* background-color: powderblue; */
+//   margin: 50px auto;
+//   font-size: 24px;
+//   @media screen and (max-width: 767px) {
+//     margin: 80px auto 30px auto;
+//     width: 100%;
+//   }
+//   .detail {
+//     width: 440px;
+//     border: 1px solid #000;
+//     box-sizing: border-box;
+//     margin: 0 auto;
+//     /* background-color: peachpuff; */
+//     border-radius: 10px;
+//     @media screen and (max-width: 767px) {
+//       width: 90%;
+//     }
+//     /* padding-top: 20px; */
+//   }
+
+//   .btn {
+//     width: 440px;
+//     height: 45px;
+//     border: 1px solid #000;
+//     box-sizing: border-box;
+//     margin: 40px auto 0 auto;
+//     border-radius: 50px;
+//     cursor: pointer;
+//     @media screen and (max-width: 767px) {
+//       margin: 25px auto 0 auto;
+//       width: 90%;
+//     }
+//   }
+// `;
+
+// const UlDiv = styled.ul`
+//   width: 380px;
+//   /* background-color: rebeccapurple; */
+//   margin: 0 auto;
+//   border-radius: 10px;
+//   @media screen and (max-width: 767px) {
+//     width: 100%;
+//     margin: 0;
+//     > li.radio_box.writing_area {
+//       height: 30px;
+//       margin: 20px auto 20px auto;
+//     }
+//   }
+//   > li.radio_box {
+//     display: block;
+//     width: 185px;
+//     margin: 20px auto 0 auto;
+//     input[type='radio'] {
+//       appearance: none;
+//       display: inline-block;
+//       width: 16px;
+//       height: 16px;
+//       border: 2px solid black;
+//     }
+//     input[type='radio']:checked {
+//       appearance: none;
+//       display: inline-block;
+//       width: 16px;
+//       height: 16px;
+//       border: 2px solid black;
+//       background-color: blue;
+//     }
+//     .label_right {
+//       margin-left: 30px;
+//     }
+//     > label {
+//       display: inline-block;
+//       font-size: 20px;
+//       /* background-color: red; */
+//     }
+//   }
+//   .image_box {
+//     width: 285px;
+//     height: 100px;
+//     /* background-color: orange; */
+//     box-sizing: border-box;
+//     margin: 0 auto 20px auto;
+//     .image {
+//       float: left;
+//       width: 100px;
+//       height: 100px;
+//       border-radius: 10px;
+//       margin-right: 25px;
+//       background-color: rgba(255, 250, 176, 0.8);
+//       border: 1px solid rgba(0, 0, 0, 0.1);
+//       overflow: hidden;
+//       > img.basic_image {
+//         display: inline-block;
+//         width: 100%;
+//         height: 100%;
+//       }
+//     }
+//     .btn_list {
+//       margin-top: 6px;
+//       float: left;
+//       width: 160px;
+//       height: 88px;
+//       .profile_btn {
+//         display: inline-block;
+//         width: 100%;
+//         font-size: 14px;
+//         height: 36px;
+//         border-radius: 10px;
+//         text-align: center;
+//         line-height: 36px;
+//         background-color: #95c710;
+//         color: rgba(255, 255, 255, 0.9);
+//         font-weight: 600;
+//         > input.input_hidden {
+//           display: none;
+//         }
+//       }
+//       .profile_btn.delete_btn {
+//         border: 1px solid rgba(0, 0, 0, 0.1);
+//         color: rgba(0, 0, 0, 0.6);
+//         background-color: white;
+//         margin-top: 18px;
+//       }
+//     }
+//   }
+//   .writing_area {
+//     width: 380px;
+//     height: 60px;
+//     font-size: 16px;
+//     /* background-color: salmon; */
+//     box-sizing: border-box;
+//     .text {
+//       border: 1px solid red;
+//       height: 40px;
+//       width: 100%;
+//       float: left;
+//       > input {
+//         width: 100%;
+//         height: 40px;
+//       }
+//       > textarea {
+//         overflow-y: hidden;
+//         width: 100%;
+//         /* height: 40px; */
+//         min-height: 100px;
+//         height: ${(props) => (props.newHeightPx ? props.newHeightPx : 100)}px;
+//       }
+//     }
+//     .s_btn {
+//       text-align: center;
+//       font-size: 14px;
+//       width: 70px;
+//       height: 40px;
+//       float: right;
+//       background-color: cyan;
+//       border-radius: 8px;
+//     }
+//     > select {
+//       width: 100%;
+//       height: 40px;
+//       font-size: 14px;
+//       line-height: 22px;
+//       margin-bottom: 20px;
+//     }
+//     @media screen and (max-width: 767px) {
+//       width: 90%;
+//       margin: 0 auto;
+//     }
+//   }
+//   .s_writing_area {
+//     width: 50%;
+//     height: 60px;
+//     font-size: 16px;
+//     background-color: rebeccapurple;
+//     box-sizing: border-box;
+//     float: left;
+//     > select.time_select {
+//       width: 92%;
+//       height: 40px;
+//     }
+//     > select.people_num_select {
+//       width: 90%;
+//       height: 40px;
+//       @media screen and (max-width: 380px) {
+//         width: 86%;
+//       }
+//       @media screen and (min-width: 768px) {
+//         width: 86%;
+//       }
+//     }
+//     > span {
+//       float: right;
+//     }
+//   }
+//   .location_box.writing_area > div.text {
+//     border: 1px solid red;
+//     height: 40px;
+//     width: calc(100% - 80px);
+//     float: left;
+//     > input {
+//       width: 100%;
+//       height: 40px;
+//     }
+//   }
+//   li.text_box.writing_area {
+//     min-height: 120px;
+//     height: ${(props) => (props.newHeightPx ? props.newHeightPx + 20 : 120)}px;
+//   }
+// `;
+
 const MapModalWrapper = styled.div`
   position: fixed;
   top: 0;
@@ -33,18 +262,20 @@ const Wrapper = styled.div`
   max-width: 1200px;
   /* background-color: powderblue; */
   margin: 50px auto;
-  font-size: 24px;
   @media screen and (max-width: 767px) {
     margin: 80px auto 30px auto;
     width: 100%;
   }
   .detail {
     width: 440px;
-    border: 1px solid #000;
+    border: 1px solid #ecede8;
     box-sizing: border-box;
     margin: 0 auto;
+    padding-bottom: 20px;
+    background-color: white;
     /* background-color: peachpuff; */
     border-radius: 10px;
+    box-shadow: 1px 1px 5px 0px #00000014;
     @media screen and (max-width: 767px) {
       width: 90%;
     }
@@ -53,15 +284,29 @@ const Wrapper = styled.div`
 
   .btn {
     width: 440px;
-    height: 45px;
-    border: 1px solid #000;
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: #ececec;
+    border: 1px solid #eaeaea;
+    color: #aeaeae;
     box-sizing: border-box;
-    margin: 40px auto 0 auto;
-    border-radius: 50px;
+    margin: 20px auto 0 auto;
+    border-radius: 10px;
     cursor: pointer;
+    box-shadow: 1px 1px 5px 0px #00000014;
+    &:hover {
+      border: 0px;
+      background-color: #ff4342;
+      color: #ffe1e0;
+    }
     @media screen and (max-width: 767px) {
       margin: 25px auto 0 auto;
       width: 90%;
+      border: 0px;
+      background-color: #ff4342;
+      color:#ffe1e0;
     }
   }
 `;
@@ -74,74 +319,118 @@ const UlDiv = styled.ul`
   @media screen and (max-width: 767px) {
     width: 100%;
     margin: 0;
-    > li.radio_box.writing_area {
-      height: 30px;
-      margin: 20px auto 20px auto;
-    }
   }
   > li.radio_box {
-    display: block;
-    width: 185px;
-    margin: 20px auto 0 auto;
+    padding-top: 30px;
+    /* background-color: red; */
+    width: 100%;
+    display: flex;
+    @media screen and (max-width: 767px) {
+      width: 90%;
+    }
+    > img {
+      width: 10px;
+      display: block;
+      position: relative;
+      left: 13px;
+      bottom: 7px;
+    }
     input[type='radio'] {
       appearance: none;
       display: inline-block;
       width: 16px;
       height: 16px;
-      border: 2px solid black;
+      border-radius: 3px;
+      border: 1px solid #b7b7b7;
     }
     input[type='radio']:checked {
       appearance: none;
       display: inline-block;
       width: 16px;
       height: 16px;
-      border: 2px solid black;
-      background-color: blue;
-    }
-    .label_right {
-      margin-left: 30px;
+      border: 0px;
+      background-color: #ff4342;
+      & + label {
+        color: #292929;
+      }
+      &::after {
+        position: relative;
+        top: 1px;
+        content: '✔'; /* 체크 마크 ASCii 문자 */
+        font-size: 18px;
+        line-height: 0.8;
+        color: white;
+        transition: all 0.3s;
+      }
     }
     > label {
+      /* background-color: green; */
       display: inline-block;
-      font-size: 20px;
+      font-size: 16px;
+      margin-right: 30px;
+      font-weight: 300;
+      color: #a9a9a9;
       /* background-color: red; */
     }
   }
   .image_box {
-    width: 285px;
+    padding-top: 30px;
     height: 100px;
     /* background-color: orange; */
     box-sizing: border-box;
     margin: 0 auto 20px auto;
+    @media screen and (max-width: 767px) {
+      width: 90%;
+    }
     .image {
       float: left;
       width: 100px;
       height: 100px;
       border-radius: 10px;
       margin-right: 25px;
-      background-color: rgba(255, 250, 176, 0.8);
-      border: 1px solid rgba(0, 0, 0, 0.1);
+      border: 1.5px solid #dcdfd5;
       overflow: hidden;
+      > img.choice_image {
+        opacity: 1;
+        width: 100%;
+      }
       > img.basic_image {
         display: inline-block;
+        opacity: 0.3;
         width: 100%;
-        height: 100%;
+      }
+    }
+    > div.img_text {
+      font-size: 14px;
+      color: #bcbcbc;
+      font-weight: 400;
+      line-height: 20px;
+      padding-top: 3px;
+      padding-right: 20px;
+      @media only screen and (max-width: 430px) {
+        padding-top: 0px;
+        font-size: 12px;
+        line-height: 18px;
       }
     }
     .btn_list {
-      margin-top: 6px;
+      margin-top: 18px;
       float: left;
       width: 160px;
-      height: 88px;
+      @media only screen and (max-width: 430px) {
+        margin-top: 0.4em;
+      }
       .profile_btn {
         display: inline-block;
-        width: 100%;
-        font-size: 14px;
+        margin-right: 8px;
+        width: 48px;
+        font-size: 18px;
+        padding-top: 10px;
         height: 36px;
-        border-radius: 10px;
+        border-radius: 100px;
         text-align: center;
-        line-height: 36px;
-        background-color: #95c710;
+        background-color: #bdbdbd;
+        border: 1px solid #b3b3b3;
         color: rgba(255, 255, 255, 0.9);
         font-weight: 600;
         > input.input_hidden {
@@ -150,27 +439,42 @@ const UlDiv = styled.ul`
       }
       .profile_btn.delete_btn {
         border: 1px solid rgba(0, 0, 0, 0.1);
-        color: rgba(0, 0, 0, 0.6);
+        color: #bdbdbd;
         background-color: white;
-        margin-top: 18px;
       }
     }
   }
   .writing_area {
     width: 380px;
     height: 60px;
-    font-size: 16px;
     /* background-color: salmon; */
     box-sizing: border-box;
+    padding-top: 10px;
     .text {
-      border: 1px solid red;
+      /* border: 1px solid red; */
       height: 40px;
       width: 100%;
       float: left;
       > input {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #444;
         width: 100%;
-        height: 40px;
+        height: 45px;
+        border: none;
+        border-bottom: 1px solid #dcdfd58c;
+        &::placeholder {
+          font-size: 14px;
+          color: #bcbcbc;
+        }
       }
+      > input:focus {
+        border-bottom: 2px solid #ff4342;
+        color: #222;
+        outline: none;
+      }
+
       > textarea {
         overflow-y: hidden;
         width: 100%;
@@ -183,18 +487,17 @@ const UlDiv = styled.ul`
       text-align: center;
       font-size: 14px;
       width: 70px;
-      height: 40px;
+      height: 45px;
+      line-height: 45px;
       float: right;
-      background-color: cyan;
+      color: #ff4342;
+      border: 2px solid #ff7b7a;
       border-radius: 8px;
     }
     > select {
       width: 100%;
-      height: 40px;
-      font-size: 14px;
-      line-height: 22px;
-      margin-bottom: 20px;
     }
+
     @media screen and (max-width: 767px) {
       width: 90%;
       margin: 0 auto;
@@ -203,8 +506,7 @@ const UlDiv = styled.ul`
   .s_writing_area {
     width: 50%;
     height: 60px;
-    font-size: 16px;
-    background-color: rebeccapurple;
+    /* background-color: rebeccapurple; */
     box-sizing: border-box;
     float: left;
     > select.time_select {
@@ -223,21 +525,50 @@ const UlDiv = styled.ul`
     }
     > span {
       float: right;
+      line-height: 45px;
+      color: #444;
     }
   }
   .location_box.writing_area > div.text {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     height: 40px;
     width: calc(100% - 80px);
     float: left;
     > input {
       width: 100%;
-      height: 40px;
+      height: 45px;
+      border: none;
+      border-bottom: 1px solid #dcdfd58c;
+      &::placeholder {
+        font-size: 14px;
+        color: #bcbcbc;
+      }
     }
   }
   li.text_box.writing_area {
     min-height: 120px;
     height: ${(props) => (props.newHeightPx ? props.newHeightPx + 20 : 120)}px;
+  }
+  .textarea {
+    padding-top: 16px;
+    /* margin-top: 30px; */
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #444;
+    border: none;
+    border-bottom: 1px solid #dcdfd58c;
+    appearance: none;
+  }
+  .textarea:focus {
+    /* border-bottom:2px solid #ff4342; */
+    color: #222;
+    outline: none;
+  }
+  .textarea::placeholder {
+    padding-left: 8px;
+    font-size: 14px;
+    color: #bcbcbc;
   }
 `;
 
@@ -258,7 +589,7 @@ const PostingEditing = () => {
 
   // useState로 Modal창 On(true)/Off(false)
   let [mapModal, setMapModal] = useState(false);
-  let [locationInfo, setLocationInfo] = useState([post.market, '']);
+  let [locationInfo, setLocationInfo] = useState([post.market, post.address]);
   let locationInfoText = `${locationInfo[0]}, ${locationInfo[1]}`;
 
   // SelectBox 내용
@@ -329,6 +660,8 @@ const PostingEditing = () => {
       // console.log('줄어들때', e.target.scrollHeight)
     }
   };
+
+
   // 스크롤 페이지 상단으로 이동 함수
   const toTheTop = () => {
     window.scrollTo(0, 0);
@@ -343,6 +676,9 @@ const PostingEditing = () => {
   };
   const handleChangeTitle = (e) => {
     setInputTitle(e.target.value);
+  };
+  const handleChangeText = (e) => {
+    setInputText(e.target.value);
   };
   const handleChangeDate = (e) => {
     setDate(e.target.value);
@@ -517,6 +853,33 @@ const PostingEditing = () => {
       <Wrapper>
         <div className="detail">
           <UlDiv newHeightPx={textareaHeight}>
+            <li className="image_box">
+              <div className="image">
+                <img className="basic_image" src={thumbnail} />
+              </div>
+              <div className="img_text">
+                필요한 사진을 추가해보세요.
+                <br /> 사진은 최대1장 첨부 가능합니다.
+              </div>
+              <div className="btn_list">
+                <label htmlFor="image" className="upload_btn profile_btn">
+                  <input
+                    id="image"
+                    type="file"
+                    accept="image/*"
+                    className="input_hidden"
+                    onChange={handleChangeUpload}
+                  />
+                   +
+                </label>
+                <div
+                  className="delete_btn profile_btn"
+                  onClick={handleClickDeleteImg}
+                >
+                -
+                </div>
+              </div>
+            </li>
             <li className="radio_box writing_area">
               <label htmlFor="buy">
                 <input
@@ -540,7 +903,7 @@ const PostingEditing = () => {
                   type="radio"
                   name="about"
                   value="share"
-                  checked={
+                  defaultChecked={
                     post.tradeType === 'share' || post.tradeType === '나눔'
                       ? true
                       : false
@@ -550,31 +913,9 @@ const PostingEditing = () => {
                 &nbsp;&nbsp;나눔
               </label>
             </li>
-            <li className="image_box">
-              <div className="image">
-                <img className="basic_image" src={thumbnail} />
-              </div>
-              <div className="btn_list">
-                <label htmlFor="image" className="upload_btn profile_btn">
-                  <input
-                    id="image"
-                    type="file"
-                    accept="image/*"
-                    className="input_hidden"
-                    onChange={handleChangeUpload}
-                  />
-                  이미지 업로드
-                </label>
-                <div
-                  className="delete_btn profile_btn"
-                  onClick={handleClickDeleteImg}
-                >
-                  이미지 제거
-                </div>
-              </div>
-            </li>
+            
             <li className="category_box writing_area">
-              <select name="category" onChange={handleChangeCategory}>
+              <select className="select_css" name="category" onChange={handleChangeCategory}>
                 <option value="">카테고리</option>
                 {CategoryList.map((el, idx) => (
                   <option
@@ -612,9 +953,7 @@ const PostingEditing = () => {
                   setMapModal(!mapModal);
                 }}
               >
-                지도에서
-                <br />
-                찾기
+                장소 찾기
               </div>
             </li>
             <li className="date_box writing_area">
@@ -631,7 +970,7 @@ const PostingEditing = () => {
             <li className="writing_area">
               <div className="time_box s_writing_area">
                 <select
-                  className="time_select"
+                  className="time_select select_css"
                   name="time"
                   onChange={handleChangeTime}
                 >
@@ -649,7 +988,7 @@ const PostingEditing = () => {
               </div>
               <div className="people_box s_writing_area">
                 <select
-                  className="people_num_select"
+                  className="people_num_select select_css"
                   name="people_num"
                   onChange={handleChangeNum}
                 >
@@ -670,8 +1009,11 @@ const PostingEditing = () => {
             <li className="text_box writing_area">
               <div className="text">
                 <textarea
-                  placeholder="내용을 입력하세요"
-                  onChange={handleChangeHeight}
+                  className="textarea"
+                  placeholder={post.content}
+                  onKeyUp={handleChangeHeight}
+                  onKeyDown={handleChangeHeight}
+                  onChange={handleChangeText}
                   value={inputText}
                 ></textarea>
               </div>
@@ -684,7 +1026,7 @@ const PostingEditing = () => {
               textAlign: 'center',
             }}
           >
-            작성완료
+            수정완료
           </p>
         </div>
       </Wrapper>

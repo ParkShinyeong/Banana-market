@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-import search_icon from "../icon/search_icon.svg";
 import axios from "axios";
 import guCodeList from '../resource/guCodeList'
+import { ReactComponent as SearchIcon } from '../icon/search_icon.svg';
 
 const { kakao } = window;
 
@@ -49,21 +49,28 @@ const MapModalWrapper = styled.div`
         /* background-color: purple; */
         > div.search_box {
           width: 314px;
-          height: 40px;
+          height: 45px;
           line-height: 38px;
-          border-radius: 100px;
+          border-radius: 10px;
           box-sizing: border-box;
           margin: 0 16px 16px 30px;
           padding-left: 20px;
           background-color: white;
-          border: solid 2px #90bd19;
+          /* border: solid 1.5px #dadfe5; */
+          overflow: hidden;
+          border:2px solid #ededed;
           > input.input {
+            line-height: 45px;
             width: 236px;
             display: inline-block;
-            line-height: 40px;
-            height: 30px;
+            height: 45px;
             outline: none;
             border: 0px solid;
+            font-size: 16px;
+            &::placeholder{
+              font-size: 14px;
+              color:#bcbcbc;
+            }
           }
           > div.search_btn {
             line-height: 38px;
@@ -73,21 +80,18 @@ const MapModalWrapper = styled.div`
             width:36px;
             height: 40px;
             outline: 0;
-            > img.search_icon {
+            top: 7px;
+            > .search_icon {
               width: 16px;
-              height: 16px;
-              svg#Layer_1{
-                .cls-1, .cls-2 {
-                  stroke: #90bd19;
-                }
-              }
+              margin-right: -18px;
+              padding-top: 13px;
             }
           }
         }
         >div#markList{
           width: 100%;
           height: calc(100% - 86px);
-          padding: 0px 16px 0px 30px;
+          padding: 10px 16px 0px 30px;
           z-index: 999;
           /* background-color: red; */
           > div.line {
@@ -100,21 +104,23 @@ const MapModalWrapper = styled.div`
             width: 100%;
             height: 30px;
             margin-bottom: 10px;
-            font-size: 14px;
+            font-size: 16px;
             line-height: 30px;
             > div.present_location{
               width: auto;
               float: left;
+              color: #464646;
             }
             > div.setting_btn{
+              font-size: 14px;
               float: right;
               text-align: center;
               width: 120px;
               height: 30px;
               border-radius: 100px;
-              background-color: #95c710;
+              background-color: #464646;
               color: rgba(255, 255, 255, 0.9);
-              font-weight: 600;
+              cursor: pointer;
             } 
           }
           >ul.search_list{
@@ -136,6 +142,7 @@ const MapModalWrapper = styled.div`
               /* background-color: white; */
               border-bottom: 1px solid rgba(0, 0, 0, 0.1);
               padding: 16px 0 16px 10px;
+              cursor: pointer;
               >span.title{
                 font-size: 16px;
                 font-weight: 500;
@@ -161,9 +168,9 @@ const MapModalWrapper = styled.div`
                   appearance: none;
                 }
                 >input[type='radio']:checked + div.btn {
-                  border: 1px solid #90bd19;
+                  border: 1px solid #ff4342;
                   font-weight: 500;
-                  color: #90bd19;
+                  color: #ff4342;
                 }
                 >div.btn{
                   position: absolute;
@@ -176,11 +183,12 @@ const MapModalWrapper = styled.div`
                   font-size: 14px;
                   border-radius: 100px;
                   color: rgba(0, 0, 0, 0.5);
+                  cursor: pointer;
                 }
                 >div.btn:hover {
-                  border: 1px solid #90bd19;
+                  border: 1px solid rgba(0, 0, 0, 0.4);
                   font-weight: 500;
-                  color: #90bd19;
+                  color: rgba(0, 0, 0, 0.6);
                 }
               } 
             }
@@ -200,22 +208,24 @@ const MapModalWrapper = styled.div`
             border-radius: 10px;
           }
           > div.confirm_btn{
-            height: 40px;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.15);
-            border-radius: 10px;
             text-align: center;
-            line-height: 40px;
-            font-size: 14px;
-            font-weight: 600;
+            height: 50px;
+            line-height: 50px;
+            font-size: 16px;
+            font-weight: 500;
+            background-color: #ececec;
+            border: 1px solid #eaeaea;
+            color: #969696;
+            box-sizing: border-box;
             margin-top: 16px;
-          }
-          > div.confirm_btn:hover{
-            color: white;
-            background-color: rgba(0, 0, 0, 0.3);
-            text-align: center;
-            font-size: 14px;
-            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 1px 1px 5px 0px #00000014;
+            &:hover {
+              border: 0px;
+              background-color: #ff4342;
+              color: #ffe1e0;
+            }
           }
         } 
       } 
@@ -331,12 +341,12 @@ const MapModalWrapper = styled.div`
             }
             > div.search_btn {
               width: 20%;
-              margin-right: 0;
+              margin-right: -30px;
             }
           }
           > div#markList{
             height: auto;
-            padding: 0px 22px;
+            padding: 22px;
             /* background-color: aqua; */
             > div.line {
               margin-top:16px;
@@ -364,7 +374,21 @@ const MapModalWrapper = styled.div`
                 } 
               }
             }
-
+            > div.confirm_btn{
+                text-align: center;
+                height: 50px;
+                line-height: 50px;
+                font-size: 16px;
+                font-weight: 500;
+                background-color: #ff4342;
+                border: 1px solid #eaeaea;
+                color: #ffe1e0;
+                box-sizing: border-box;
+                margin-top: 16px;
+                border-radius: 10px;
+                cursor: pointer;
+                box-shadow: 1px 1px 5px 0px #00000014;
+              }
           }
         }    
         >div.map_img{
@@ -714,13 +738,13 @@ const MapModal = ({ setMapModal, setLocationInfo, locationInfo }) => {
         <div className='map_box'>
           <div id='map_list'> 
             <div className='search_box'>
-              <input className='input' type='text' onChange={handleChangeSearchWord} onKeyPress={onCheckEnter}/>
+              <input className='input' type='text' onChange={handleChangeSearchWord} onKeyPress={onCheckEnter} placeholder='장소를 검색해주세요.'/>
               <div className='search_btn' onClick={handleClickSearch}> 
-                <img src={search_icon} className="icon search_icon" onClick={handleClickSearch}/> 
+                <SearchIcon stroke='#868E96' className="icon search_icon" onClick={handleClickSearch}></SearchIcon>  
               </div>
             </div>
             <div id='markList'>
-              <div className='line'></div>
+              {/* <div className='line'></div> */}
               <div className='location_box'>
                 <div className='present_location'>검색 위치 &nbsp; &#9656; &nbsp; {location}</div>
                 <div className='setting_btn' onClick={handleClickResetLocation} >내 동네로 이동</div>

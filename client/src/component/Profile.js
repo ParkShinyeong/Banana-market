@@ -537,7 +537,7 @@ const Profile = ({ handleChangeAuth }) => {
           <li className="edit_profile info_area">
             <div className="tt">프로필사진 변경</div>
             <div className="btn_list">
-              <label htmlFor="image" className="upload_btn profile_btn">
+              <label htmlFor="image" className="btn_css upload_btn profile_btn">
                 {' '}
                 수정하기
                 <input
@@ -549,7 +549,7 @@ const Profile = ({ handleChangeAuth }) => {
                 />
               </label>
               <div
-                className="delete_btn profile_btn"
+                className="delete_btn profile_btn btn_css"
                 onClick={handleClickDeleteImg}
               >
                 삭제하기
@@ -568,7 +568,7 @@ const Profile = ({ handleChangeAuth }) => {
                   placeholder={setUserInfo.nickName}
                 />
               </div>
-              <div className="s_btn" onClick={handleChangeBtnNick}>
+              <div className="s_btn btn_css" onClick={handleChangeBtnNick}>
                 완료
               </div>
             </li>
@@ -576,7 +576,7 @@ const Profile = ({ handleChangeAuth }) => {
             <li className="nick info_area">
               <div className="tt">닉네임</div>
               <div className="text">{setUserInfo.nickName}</div>
-              <div className="s_btn" onClick={handleChangeBtnNick}>
+              <div className="s_btn btn_css" onClick={handleChangeBtnNick}>
                 수정
               </div>
             </li>
@@ -614,7 +614,7 @@ const Profile = ({ handleChangeAuth }) => {
                   )}
                 </select>
               </div>
-              <div className="s_btn" onClick={handleChangeBtnSpot}>
+              <div className="s_btn btn_css" onClick={handleChangeBtnSpot}>
                 완료
               </div>
             </li>
@@ -624,22 +624,22 @@ const Profile = ({ handleChangeAuth }) => {
               <div className="text">
                 서울특별시, &nbsp; {setUserInfo.region}
               </div>
-              <div className="s_btn" onClick={handleChangeBtnSpot}>
+              <div className="s_btn btn_css" onClick={handleChangeBtnSpot}>
                 수정
               </div>
             </li>
           )}
         </UlDiv>
       </div>
-      <div className="md_btn_list info_area">
+      <div className="md_btn_list info_area ">
             <div
-              className="md_btn secession_btn"
+              className="md_btn secession_btn btn_css"
               onClick={handleChangeSecessionModalState}
             >
               회원탈퇴
             </div>
             <div
-              className="md_btn password_change_btn"
+              className="md_btn password_change_btn btn_css"
               onClick={handleChangePasswordModalState}
             >
               비밀번호 변경

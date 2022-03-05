@@ -91,18 +91,21 @@ const Wrapper = styled.div`
         color: #c2c4c5;
         font-weight: 500;
         margin-bottom: 5px;
-      }
-      .word {
-        margin-top: 10px;
-        margin-right: 10px;
-        padding: 10px 14px;
-        border-radius: 10px;
-        background-color: #ffffca;
-        border: 1px solid #f0f0a2;
-        color: #b9b83c;
-
-        font-weight: 400;
-        float: left;
+        cursor: pointer;
+        .word {
+          margin-top: 10px;
+          margin-right: 10px;
+          padding: 10px 14px;
+          border-radius: 10px;
+          background-color: #ffffca;
+          border: 1px solid #f0f0a2;
+          color: #b9b83c;
+          font-weight: 400;
+          float: left;
+          &:hover{
+            background-color: white;
+          }
+        }
       }
     }
   }

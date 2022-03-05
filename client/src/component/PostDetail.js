@@ -5,6 +5,10 @@ import { postListDelete } from '../redux/actions/actions';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
+import spot_sma from '../icon/spot_sma.png'
+import clock_sma from '../icon/clock_sma.png'
+import chat_sma from '../icon/chat_sma.png'
+
 const { kakao } = window;
 
 const DetailDiv = styled.div`
@@ -20,239 +24,245 @@ const DetailDiv = styled.div`
   }
   .detail {
     width: 440px;
-    border: 1px solid #c4c4c4;
+    border: 1px solid #ecede8;
     box-sizing: border-box;
+    padding: 30px;
     margin: 0 auto;
     /* background-color: peachpuff; */
     border-radius: 10px;
+    box-shadow: 1px 1px 5px 0px #00000014;
     @media screen and (max-width: 767px) {
       width: 90%;
     }
     /* padding-top: 20px; */
   }
 
-  .btn {
+  .md_btn_list {
+    display: flex;
+    margin-top: 20px;
     width: 440px;
-    height: 45px;
-    border: 1px solid #000;
-    box-sizing: border-box;
-    margin: 40px auto 0 auto;
-    border-radius: 50px;
-    cursor: pointer;
-    text-align: center;
-    line-height: 45px;
+    margin: 0 auto;
     @media screen and (max-width: 767px) {
-      margin: 30px auto 0 auto;
       width: 90%;
-      height: 40px;
-      line-height: 40px;
+    }
+    /* padding: 20px 30px; */
+    .md_btn {
+      box-shadow: 1px 1px 5px 0px #00000014;
+      text-align: center;
+      font-size: 14px;
+      width: 212px;
+      height: 50px;
+      line-height: 50px;
+      font-size: 18px;
+      font-weight: 400;
+      background-color: white;
+      border: 1px solid #ff4342;
+      color: #ff4342;
+      border-radius: 10px;
+      margin-top: 20px;
+      cursor: pointer;
+      @media screen and (max-width: 767px) {
+        width: 49% ;
+        justify-content: flex-end;
+      }
+    }
+    > div.delete_btn {      
+      margin-left: auto;
+      background-color: #ff4342;
+      color: #ffe1e0;
+      float: right;
     }
   }
-
-  .user_btn {
+  .btn {
+    text-align:center;
     width: 440px;
-    height: 45px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    font-weight: 500;
     box-sizing: border-box;
-    margin: 40px auto 0 auto;
-    border-radius: 50px;
+    margin: 20px auto 0 auto;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 0px #00000014;
+    border: 0px;
+    background-color: #3999ff;
+    color: #fbfff1;
     cursor: pointer;
-    text-align: center;
-    line-height: 45px;
-    @media screen and (max-width: 767px) {
-      margin: 30px auto 0 auto;
-      width: 90%;
-      height: 40px;
-      line-height: 40px;
-    }
-    div {
-      float: left;
-    }
-    .edit_btn {
-      width: 200px;
-      height: 45px;
-      background-color: #95c710;
-      box-sizing: border-box;
-      border-radius: 50px;
-      cursor: pointer;
-      text-align: center;
-      line-height: 45px;
-      @media screen and (max-width: 767px) {
-        width: 45%;
-        height: 40px;
-        line-height: 40px;
-      }
-    }
-    .delete_btn {
-      width: 200px;
-      height: 45px;
-      float: right;
-      background-color: rgba(0, 0, 0, 0.15);
-      box-sizing: border-box;
-      border-radius: 50px;
-      color: white;
-      cursor: pointer;
-      text-align: center;
-      line-height: 45px;
-      @media screen and (max-width: 767px) {
-        width: 45%;
-        height: 40px;
-        line-height: 40px;
-      }
-    }
   }
 `;
 
 const UlDiv = styled.ul`
-  width: 380px;
+  width: 100%;
   /* background-color: rebeccapurple; */
-  margin: 30px auto;
+  margin: 0 auto;
   border-radius: 10px;
   @media screen and (max-width: 767px) {
-    width: 100%;
-    margin: 0;
   }
   .profile {
-    width: 380px;
+    width: 100%;
     height: 90px;
-    border-bottom: 1px solid #ddd;
-
+    border-bottom: 1px dashed #c6c6c6;
     box-sizing: border-box;
     margin-bottom: 20px;
     @media screen and (max-width: 767px) {
-      width: 90%;
       height: 85px;
-      margin: 20px auto 20px auto;
     }
     > .in_grid {
       display: grid;
-      grid-template-columns: 70px auto;
-      grid-gap: 25px;
+      grid-template-columns: 1.5fr 0.5fr;
       @media screen and (max-width: 1200px) {
-        grid-template-columns: 70px auto;
       }
-
       @media screen and (max-width: 768px) {
-        grid-template-columns: 65px auto;
-        grid-gap: 20px;
       }
-      .image {
-        min-height: 70px;
-        background-color: #ddd;
+      > li.image {
+        height: 70px;
+        width: 70px;
+        margin-left: auto;
         border-radius: 50px;
-        @media screen and (max-width: 768px) {
-          min-height: 65px;
-        }
-
-        img {
-          width: 100%;
-          height: 100%;
-          border-radius: 50px;
-        }
       }
-      .profile_info {
-        min-height: 70px;
+      > li.profile_info {
+        height: 70px;
+        margin-right: auto;
         @media screen and (max-width: 768px) {
-          min-height: 65px;
         }
         .id {
-          font-weight: 500;
-          margin-top: 5px;
+          font-weight: 600;
+          font-size: 16px;
+          margin-top: 3px;
+          color:#2929298c;
           @media screen and (max-width: 768px) {
-            font-size: 15px;
-            margin-top: 4px;
           }
         }
         .location {
-          font-size: 12px;
-          margin-top: 5px;
-          color: #9d9c9c;
+          font-size: 15px;
+          margin-top: 3px;
+          color:#393a3b8c;
           @media screen and (max-width: 768px) {
-            font-size: 11px;
-            margin-top: 4px;
           }
         }
         .deal_total {
-          font-size: 14px;
-          margin-top: 2px;
-          color: #2b2828;
+          font-size: 13px;
+          margin-top: 3px;
+          color: #f4b600;
+          border-radius: 3px;
+          padding: 3px 3px 1px 3px;
+          font-weight: 600;
+          border: 2px solid #f4b600;
           @media screen and (max-width: 768px) {
-            font-size: 13px;
           }
         }
       }
     }
   }
   .title {
-    width: 380px;
-    height: 25px;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 8px;
+    color: #2f2f2f;
     /* background-color: salmon; */
     box-sizing: border-box;
-    margin-bottom: 20px;
     font-weight: 500;
-    font-size: 21px;
+    font-size: 20px;
+    line-height: 30px;
     @media screen and (max-width: 767px) {
-      width: 90%;
-      margin: 0 auto 20px auto;
-      font-size: 19px;
     }
   }
-
-  .content {
-    width: 380px;
-    /* background-color: salmon; */
-    box-sizing: border-box;
-    margin-bottom: 20px;
-    font-size: 17px;
-    line-height: 1.5;
-    @media screen and (max-width: 767px) {
-      width: 90%;
-      margin: 0 auto 20px auto;
+  .others{
+    .text{
+      color:#bebebe;
       font-size: 15px;
-      height: 110px;
+      font-weight: 500;
     }
   }
-  .date {
-    width: 380px;
-    height: 30px;
+  .content {
+    width: 100%;
     /* background-color: salmon; */
-    border-bottom: 1px solid #ddd;
     box-sizing: border-box;
-    margin-bottom: 20px;
-    font-size: 15px;
-    color: #2b2828;
-    @media screen and (max-width: 767px) {
-      width: 90%;
-      margin: 0 auto 20px auto;
-      font-size: 14px;
+    margin: 0px auto;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 28px;
+    color: #3f3f3f;
+    >div{
+      margin-top:30px;
+      margin-bottom: 30px;
+    }
+    >img{
+      border-radius: 8px;
+      margin-bottom: 5px;
+      @media screen and (max-width: 768px) {
+      width: 100%;
+      }
     }
   }
-  .pepole {
+  > li.trade_info{
     width: 380px;
-    height: 30px;
-    /* background-color: salmon; */
-    border-bottom: 1px solid #ddd;
-    box-sizing: border-box;
-    font-size: 15px;
-    margin-bottom: 20px;
-    color: #2b2828;
-    @media screen and (max-width: 767px) {
-      width: 90%;
-      margin: 0 auto 20px auto;
-      font-size: 14px;
+    background-color: #ebedf47d;
+    border: 1px solid #dadeec7d;
+    border-radius: 0 0 8px 8px;
+    padding: 20px 15px 20px 15px;
+    font-size: 16px;
+    line-height: 28px;
+    color:#9da2b5;
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+    >div >img{
+      opacity: 0.8;
+    }
+    .spot {
+      img.icon_sma{
+        height: 13px;
+      }
+      .map_btn{
+        margin-top: 20px;
+        line-height: 40px;
+        height: 40px;
+        border: 1px solid #3396ff;
+        color: #3396ff;
+        border-radius: 5px;
+        text-align: center;
+        background-color: white;
+      }
+    }
+    .date {
+      margin-bottom: 10px;
+      >span{
+        font-size: 12px;
+        margin-bottom: 2px;
+        color: #9b9b9b;
+      }
+      img.icon_sma{
+        width: 13px;
+      }
+      @media screen and (max-width: 768px) {
+      }
+    }
+    .pepole {
+      margin-bottom: 10px;
+      >span{
+        font-size: 12px;
+        margin-bottom: 2px;
+        color: #9b9b9b;
+      }
+      img.icon_sma{
+        width: 13px;
+      }
+      @media screen and (max-width: 768px) {
+      }
     }
   }
+ 
   .map {
     width: 380px;
     .map_image {
       height: 300px;
-      border: 1px solid #c4c4c4;
-      border-radius: 8px;
+      border: 1px solid #dadeec7d;
+      border-radius: 8px 8px 0 0 ;
       box-sizing: border-box;
     }
-    @media screen and (max-width: 767px) {
-      width: 90%;
-      margin: 0 auto;
-      height: 255px;
+    @media screen and (max-width: 768px) {
+      width: 100%;
     }
   }
 `;
@@ -377,139 +387,63 @@ const PostDetail = ({ chatListDetail, handleClick }) => {
 
   return (
     <>
-      {/* {!post.status ? (
-        <div>마감</div>
-      ) : (
-        <DetailDiv>
-          <div className="detail">
-            <UlDiv>
-              <div className="profile">
-                <ul className="in_grid">
-                  <li className="image">
-                    <img src={basicProfileImage}></img>
-                  </li>
-                  <li className="profile_info">
-                    <ul>
-                      <li className="id">{postWriter.name}</li>
-                      <li className="location">{postWriter.region}</li>
-                      <li className="deal_total">
-                        총 거래 : {postWriter.totalTrade}회
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-              <li className="title">
-                [{post.tradeType}] {post.title}
-              </li>
-              <li className="content">
-                <img src={post.image} />
-                <div>{post.content}</div>
-              </li>
-              <li className="date">
-                {post.date} &#124; {post.time}
-              </li>
-              <li className="pepole">
-                지금 {post.currentMate} 명 &#124; 전체 {post.totalMate} 명
-              </li>
-              <li className="map">
-                <div>
-                  장소: {post.market}, ( {post.address} ){' '}
-                </div>
-                <div className="map_image" id="staticMap"></div>
-                <div
-                  className="map_btn"
-                  onClick={() => window.open(`${post.url}`, '_blank')}
-                >
-                  장소 정보 보기
-                </div>
-              </li>
-            </UlDiv>
-          </div>
-          {postWriter.isMyPost === true ? (
-            <div className="user_btn">
-              <div
-                className="edit_btn"
-                onClick={() => {
-                  history.push('/edit');
-                }}
-              >
-                수정하기
-              </div>
-              <div
-                className="delete_btn"
-                onClick={() => {
-                  postDelete(post.id);
-                  history.push('/mylist');
-                }}
-              >
-                삭제하기
-              </div>
-            </div>
-          ) : (
-            <div
-              className="btn"
-              onClick={() => {
-                // handleClick();
-                joinChat(post.id);
-                history.push('/chat');
-              }}
-            >
-              참여하기
-            </div>
-          )}
-        </DetailDiv>
-      )} */}
       <DetailDiv>
         <div className="detail">
           <UlDiv>
             <div className="profile">
               <ul className="in_grid">
-                <li className="image">
-                  <img src={basicProfileImage}></img>
-                </li>
                 <li className="profile_info">
                   <ul>
                     <li className="id">{postWriter.name}</li>
                     <li className="location">{postWriter.region}</li>
                     <li className="deal_total">
-                      총 거래 : {postWriter.totalTrade}회
+                      {postWriter.totalTrade}회 바나나마켓 거래 이용
                     </li>
                   </ul>
+                </li>
+                <li className="image">
+                  <img src={basicProfileImage}></img>
                 </li>
               </ul>
             </div>
             <li className="title">
-              [{post.tradeType}] {post.title}
+              {post.title}
+            </li>
+            <li className='others'>
+              <span className='text'>{post.tradeType} &#183; {post.category}</span>
             </li>
             <li className="content">
-              <img src={post.image} />
               <div>{post.content}</div>
-            </li>
-            <li className="date">
-              {post.date} &#124; {post.time}
-            </li>
-            <li className="pepole">
-              지금 {post.currentMate} 명 &#124; 전체 {post.totalMate} 명
+              <img src={post.image} />
             </li>
             <li className="map">
-              <div>
-                장소: {post.market}, ( {post.address} ){' '}
-              </div>
               <div className="map_image" id="staticMap"></div>
-              <div
-                className="map_btn"
+            </li>
+            <li className="trade_info">
+              <div className="date">
+                <img className='icon_sma' src={clock_sma}/>
+                &nbsp;&nbsp;{post.date}&nbsp;, {post.time}
+              </div>
+              <div className="pepole">
+                <img className='icon_sma' src={chat_sma}/>
+                &nbsp;&nbsp;지금 {post.currentMate}명  <span>&nbsp;&#124;&nbsp;</span> 전체 {post.totalMate}명
+              </div>
+              <div className="spot"> 
+                <img className='icon_sma' src={spot_sma}/>  
+                &nbsp;&nbsp; {post.market} ( {post.address} ){' '}
+                <div className="map_btn btn_css"
                 onClick={() => window.open(`${post.url}`, '_blank')}
-              >
-                장소 정보 보기
+                  >
+                    장소 정보 더보기
+                </div>
               </div>
             </li>
           </UlDiv>
         </div>
         {postWriter.isMyPost === true ? (
-          <div className="user_btn">
+          <div className="md_btn_list">
             <div
-              className="edit_btn"
+              className="md_btn edit_btn btn_css"
               onClick={() => {
                 history.push('/edit');
               }}
@@ -517,7 +451,7 @@ const PostDetail = ({ chatListDetail, handleClick }) => {
               수정하기
             </div>
             <div
-              className="delete_btn"
+              className="md_btn delete_btn btn_css"
               onClick={() => {
                 postDelete(post.id);
                 history.push('/mylist');
@@ -528,7 +462,7 @@ const PostDetail = ({ chatListDetail, handleClick }) => {
           </div>
         ) : (
           <div
-            className="btn"
+            className="btn btn_css"
             onClick={() => {
               // handleClick();
               joinChat(post.id);
