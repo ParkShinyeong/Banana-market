@@ -96,7 +96,7 @@ function App(props) {
   //리로딩시 로그인이 풀리지 않도록함.
   useEffect(() => {
     isGoogleAuthorizationCode();
-    // handleResponseSuccess();
+    handleResponseSuccess();
   }, []);
 
   // 로그아웃 버튼 클릭 시 진행되는 함수
@@ -117,7 +117,6 @@ function App(props) {
         console.log(err);
       });
   };
- 
 
   return (
     <div className="App">
