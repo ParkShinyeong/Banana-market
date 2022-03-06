@@ -39,12 +39,9 @@ function App(props) {
 
   const isAuthenticated = () => {
     axios
-      .get(
-        `${process.env.REACT_APP_API_URL}/users/info`
-        // , {
-        //   withCredentials: true,
-        // }
-      )
+      .get(`${process.env.REACT_APP_API_URL}/users/info`, {
+        withCredentials: false,
+      })
       .then(async (res) => {
         const profileImageKey = res.data.data.profileImage;
         if (!profileImageKey) {
