@@ -115,11 +115,11 @@ const ChatRoomDiv = styled.div`
             height: 40px;
 
             border-radius: 50px;
-            /* img {
-          width: 100%;
-          height: 100%;
-          border-radius: 50px;
-        } */
+            img {
+              width: 100%;
+              height: 100%;
+              border-radius: 50px;
+            }
           }
           .user_info {
             border-radius: 10px;
@@ -237,7 +237,6 @@ const ChatRoomDiv = styled.div`
         img {
           width: 100%;
           height: 100%;
-          border-radius: 50px;
         }
       }
     }
