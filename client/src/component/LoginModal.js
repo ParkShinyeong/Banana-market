@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled, {keyframes}  from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import github_icon from '../icon/github_icon.png';
@@ -11,7 +11,7 @@ import { setLogin, setLogout } from '../redux/actions/actions';
 
 // axios.defaults.withCredentials = true;
 
-const  boxFade = keyframes` {
+const boxFade = keyframes` {
   0% {
   opacity: 0;
   }
@@ -51,7 +51,7 @@ const Login_div = styled.div`
       font-size: 30px;
       cursor: pointer;
       position: relative;
-      top:10px;
+      top: 10px;
       right: 10px;
       opacity: 0.5;
     }
@@ -80,12 +80,14 @@ const Login_div = styled.div`
         width: 300px;
         height: 45px;
         outline: 0;
+        font-size: 18px;
       }
       > .password {
         width: 300px;
         height: 45px;
         margin: 20px auto 15px auto;
         outline: 0;
+        font-size: 18px;
       }
 
       > .sign_div {
@@ -224,7 +226,7 @@ const LoginModal = ({ loginModal, setLoginModal, handleResponseSuccess }) => {
               textAlign: 'center',
               color: '#a1d026',
             }}
-          > 
+          >
             BANANA MARKET
           </p>
           <input
@@ -235,7 +237,7 @@ const LoginModal = ({ loginModal, setLoginModal, handleResponseSuccess }) => {
           />
           <input
             className="password input_css2"
-            // type="password"
+            type="password"
             placeholder="비밀번호를 입력해주세요."
             onChange={handleInputValue('password')}
           />
