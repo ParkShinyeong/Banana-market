@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import styled,  {keyframes} from "styled-components";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import styled, { keyframes } from 'styled-components';
+import { Link } from 'react-router-dom';
 import '../App.css'; //이거 써줘야 css적용됨.
 
-import main from '../icon/main.jpg'
+import main from '../icon/main.jpg';
 import logo_svg from '../icon/logo.svg';
 import { ReactComponent as NextIcon } from '../icon/next_icon.svg';
 import page1_1 from '../icon/page1_1.png';
@@ -20,8 +20,7 @@ import detail_img from '../icon/detail.png';
 const BREAK_POINT_TABLET = 768;
 const BREAK_POINT_PC = 1200;
 
-
-const  moveButton = keyframes` {
+const moveButton = keyframes` {
   0% {
     opacity: 0;
     right: 10px;
@@ -35,7 +34,7 @@ const  moveButton = keyframes` {
   }
 }
 `;
-const  fadeInText= keyframes` {
+const fadeInText = keyframes` {
   0% {
     opacity: 0;
     top: 60px;
@@ -394,18 +393,17 @@ const ChatPage = styled.div`
 `;
 
 const MainArea = styled.div`
- 
-  @media only screen and (max-width: 1200px){
+  @media only screen and (max-width: 1200px) {
     padding: 130px 30px 0 30px;
   }
-  @media only screen and (max-width: 767px ){
+  @media only screen and (max-width: 767px) {
     background-position: 65% center;
     padding: 180px 30px 0 30px;
   }
-  
+
   background-image: url('https://images.velog.io/images/ez0ez0/post/b658ba05-3b68-44c6-8bff-a8d0d7f0edf2/%EB%B0%94%EB%82%98%EB%82%98%EB%A9%94%EC%9D%B8_%EC%82%AC%EC%A7%84.jpg');
   background-size: cover;
-  background-repeat : no-repeat;
+  background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   max-height: 850px;
@@ -414,44 +412,43 @@ const MainArea = styled.div`
   overflow: hidden;
   padding: 130px 0px 0 0px;
 
-
-  div.text{
+  div.text {
     width: 1200px;
-    margin : 0 auto;
-    p{
+    margin: 0 auto;
+    p {
       //애니메이션
       position: relative;
       opacity: 0;
       top: 60px;
       animation: ${fadeInText} 1s 0.5s forwards;
       width: 100%;
-      height:auto;
+      height: auto;
       color: white;
-      font-weight:600;
+      font-weight: 600;
       font-size: 61px;
       letter-spacing: 6px;
       line-height: 1.4;
-      @media only screen and (max-width: 767px ){
+      @media only screen and (max-width: 767px) {
         font-size: 54px;
       }
-      @media only screen and (max-width: 450px ){
+      @media only screen and (max-width: 450px) {
         font-size: 36px;
       }
     }
-    p.txt_sma{
+    p.txt_sma {
       padding-top: 23px;
       letter-spacing: 0px;
       font-weight: 600;
       font-size: 22px;
       line-height: 1.5;
-      color:#ffffff9e;
+      color: #ffffff9e;
       opacity: 0;
-      @media only screen and (max-width: 767px ){
-        color:#ffffff;
+      @media only screen and (max-width: 767px) {
+        color: #ffffff;
         width: 260px;
       }
     }
-    div.go_btn{
+    div.go_btn {
       //애니메이션
       position: relative;
       opacity: 0;
@@ -459,23 +456,23 @@ const MainArea = styled.div`
       animation: ${fadeInText} 1s 0.8s forwards;
       //
       margin-top: 100px;
-      padding: 0px 30px; 
+      padding: 0px 30px;
       background-color: #fff3d1;
       width: 300px;
       height: 60px;
       display: flex;
       border-radius: 100px;
       cursor: pointer;
-      @media only screen and (max-width: 767px ){
+      @media only screen and (max-width: 767px) {
         margin-top: 30px;
       }
-      >img{
+      > img {
         /* margin-top: 10px; */
         height: 24px;
         margin-top: 17px;
       }
-      >span{
-        display:block;
+      > span {
+        display: block;
         font-weight: 600;
         font-size: 18px;
         letter-spacing: 0px;
@@ -483,17 +480,17 @@ const MainArea = styled.div`
         padding-left: 10px;
         color: #deba36;
       }
-      svg{
-        height:30px;
+      svg {
+        height: 30px;
         margin-left: auto;
         margin-top: 22px;
         opacity: 0;
-        @media only screen and (max-width: 767px ){
+        @media only screen and (max-width: 767px) {
           opacity: 1;
         }
       }
-      &:hover{
-        svg{
+      &:hover {
+        svg {
           animation: ${moveButton} 0.5s forwards;
           position: relative;
           opacity: 0;
@@ -502,159 +499,155 @@ const MainArea = styled.div`
       }
     }
   }
-  
 `;
 
 //------------------------------페이지1
 const Page1 = styled.div`
-  div.content_wrap{
+  div.content_wrap {
     max-width: 1200px;
     padding: 150px 0 0 0;
     margin: 0 auto;
     height: 850px;
     overflow: hidden;
-    @media only screen and (max-width: 1200px){
-      width:100%;
+    @media only screen and (max-width: 1200px) {
+      width: 100%;
       padding: 150px 20px 0 20px;
     }
-    @media only screen and (max-width: 960px ){
-      width:100%;
+    @media only screen and (max-width: 960px) {
+      width: 100%;
       padding: 80px 20px 0 20px;
     }
-    
-    >div.text{
+
+    > div.text {
       width: 600px;
       display: inline-block;
-      @media only screen and (max-width: 1200px){
+      @media only screen and (max-width: 1200px) {
         width: 100%;
       }
-      >div{
+      > div {
         font-size: 32px;
         font-weight: 600;
         line-height: 1.5;
         letter-spacing: 1px;
         color: #191f28;
-         //animation
+        //animation
         position: relative;
         opacity: 0;
         top: 60px;
-        .hidden{
+        .hidden {
           display: none;
         }
-        @media only screen and (max-width: 1200px){
+        @media only screen and (max-width: 1200px) {
           font-size: 24px;
           font-weight: 600;
           line-height: 1.7;
           letter-spacing: 1px;
           color: #191f28;
         }
-        @media only screen and (max-width: 480px){
+        @media only screen and (max-width: 480px) {
           font-size: 20px;
-          .hidden{
+          .hidden {
             display: inline-block;
           }
         }
       }
-      >div.img_two{
-        padding:100px 0 0 100px;
+      > div.img_two {
+        padding: 100px 0 0 100px;
         //animation
-        opacity:0;
-          position: relative;
-          top: 60px;
-        @media only screen and (max-width: 1200px){
+        opacity: 0;
+        position: relative;
+        top: 60px;
+        @media only screen and (max-width: 1200px) {
           padding: 80px 0 0 0;
           width: 100%;
           display: grid;
-          grid-template-columns: 1fr 1fr ;
+          grid-template-columns: 1fr 1fr;
         }
-        @media only screen and (max-width: 1000px){
+        @media only screen and (max-width: 1000px) {
           display: block;
           margin: 0 auto;
           width: 100%;
           text-align: center;
-          img.page1_2{
+          img.page1_2 {
             display: none;
           }
         }
-        @media only screen and (max-width: 480px){
-          padding:0;
-          img.page1_1{
-            width:260px;
+        @media only screen and (max-width: 480px) {
+          padding: 0;
+          img.page1_1 {
+            width: 260px;
           }
-        }       
+        }
       }
     }
-    div.img{
+    div.img {
       display: inline-block;
       width: 600px;
       float: right;
       padding-left: 133px;
       //animation
-      opacity:0;
+      opacity: 0;
       position: relative;
       top: 60px;
-      @media only screen and (max-width: 1200px){
+      @media only screen and (max-width: 1200px) {
         display: none;
       }
-    }  
+    }
   }
-  
 
   //애니메이션
-  div.content_wrap.change{
-    >div.text{
-      >div{
-         //animation
-         position: relative;
+  div.content_wrap.change {
+    > div.text {
+      > div {
+        //animation
+        position: relative;
         opacity: 1;
         top: 0px;
         transition: all 1s ease 0.5s;
       }
-      >div.img_two{
+      > div.img_two {
         //animation
         position: relative;
         opacity: 1;
         top: 0px;
         transition: all 1s ease 1.5s;
-        @media only screen and (max-width: 1200px){
-          
+        @media only screen and (max-width: 1200px) {
           padding: 80px 0 0 0;
           width: 100%;
           display: grid;
-          grid-template-columns: 1fr 1fr ;
-           //animation
+          grid-template-columns: 1fr 1fr;
+          //animation
           position: relative;
           opacity: 1;
           top: 0px;
           transition: all 1s ease 1s;
         }
-        @media only screen and (max-width: 1000px){
+        @media only screen and (max-width: 1000px) {
           display: block;
           margin: 0 auto;
           width: 100%;
           text-align: center;
-          img.page1_2{
+          img.page1_2 {
             display: none;
           }
-        }       
+        }
       }
     }
-    div.img{
+    div.img {
       display: inline-block;
       width: 600px;
       float: right;
       padding-left: 133px;
       //animation
-        position: relative;
-        opacity: 1;
-        top: 0px;
-        transition: all 1s ease 1s;
-      @media only screen and (max-width: 1200px){
+      position: relative;
+      opacity: 1;
+      top: 0px;
+      transition: all 1s ease 1s;
+      @media only screen and (max-width: 1200px) {
         display: none;
       }
-    }  
+    }
   }
- 
 `;
 
 //------------------------------페이지2
@@ -666,28 +659,28 @@ const Page2 = styled.div`
   width: 100%;
   overflow: hidden;
   background-color: #f8ffe7;
-  div.content_wrap{
+  div.content_wrap {
     width: 1200px;
     height: 850px;
     margin: 0 auto;
     padding: 140px 0 0 0;
     overflow: hidden;
     display: flex;
-    @media only screen and (max-width: 1200px){
-      width:100%;
+    @media only screen and (max-width: 1200px) {
+      width: 100%;
       padding: 80px 30px 0 30px;
     }
-    @media only screen and (max-width: 1150px ){
-      width:100%;
+    @media only screen and (max-width: 1150px) {
+      width: 100%;
       padding: 50px 20px 0 20px;
       display: block;
     }
-    @media only screen and (max-width: 767px ){
-      width:100%;
+    @media only screen and (max-width: 767px) {
+      width: 100%;
       padding-top: 80px;
     }
-   
-    div.text{
+
+    div.text {
       //animation
       position: relative;
       opacity: 0;
@@ -696,119 +689,120 @@ const Page2 = styled.div`
       display: inline-block;
       width: 600px;
       margin-right: auto;
-      @media only screen and (max-width: 1150px){
+      @media only screen and (max-width: 1150px) {
         display: block;
         width: 100%;
         .hidden {
           display: none;
         }
       }
-      p.text_title{
+      p.text_title {
         font-size: 22px;
         padding-bottom: 8px;
-        color: #fdbf1e; 
+        color: #fdbf1e;
       }
-      p{
+      p {
         font-size: 32px;
         font-weight: 600;
         line-height: 1.6;
         letter-spacing: 1px;
         color: #191f28;
-        @media only screen and (max-width: 565px){
-          .hidden.on{
+        @media only screen and (max-width: 565px) {
+          .hidden.on {
             display: inline-block;
           }
-        } 
+        }
       }
-      p.text_sma{
+      p.text_sma {
         padding-top: 20px;
         font-size: 24px;
         font-weight: 600;
         line-height: 1.6;
         letter-spacing: 1px;
         color: #333d4b;
-        @media only screen and (max-width: 1150px){
+        @media only screen and (max-width: 1150px) {
           padding-top: 10px;
           font-size: 20px;
         }
       }
     }
-    div.img{
+    div.img {
       display: flex;
-      @media only screen and (max-width: 1200px){
-         margin-left: 30px;
+      @media only screen and (max-width: 1200px) {
+        margin-left: 30px;
       }
-      @media only screen and (max-width: 1150px){
+      @media only screen and (max-width: 1150px) {
         width: 100%;
         display: block;
         margin: 0 auto;
       }
-      @media only screen and (max-width: 767px){
-        max-width: 100%; height: auto;
-      }  
-      
-      
+      @media only screen and (max-width: 767px) {
+        max-width: 100%;
+        height: auto;
+      }
+
       img {
         display: inline-block;
-        width:300px;
+        width: 300px;
         height: 570px;
         border-radius: 20px;
-        border: 1px solid rgba(0,0,0,0.05);
+        border: 1px solid rgba(0, 0, 0, 0.05);
         box-shadow: 2px 4px 7px 1px #00000012;
-        @media only screen and (max-width: 1150px){
+        @media only screen and (max-width: 1150px) {
           margin: 50px 0 0 0;
-        } 
-        @media only screen and (max-width: 767px){
-          max-width: 48%; height: auto;
-        }  
+        }
+        @media only screen and (max-width: 767px) {
+          max-width: 48%;
+          height: auto;
+        }
       }
-      img.page2_1{
+      img.page2_1 {
         //animation
         position: relative;
         opacity: 0;
         top: 60px;
       }
-      img.page2_2{
+      img.page2_2 {
         margin-left: 50px;
-        @media only screen and (max-width: 1200px){
+        @media only screen and (max-width: 1200px) {
           margin-left: 10px;
         }
-        @media only screen and (max-width: 1150px){
+        @media only screen and (max-width: 1150px) {
           margin-left: 70px;
-        }  
-        @media only screen and (max-width: 767px){
+        }
+        @media only screen and (max-width: 767px) {
           margin-left: 2%;
-        }      
+        }
         //animation
         position: relative;
         opacity: 0;
         top: 60px;
       }
-    }  
+    }
   }
   // 애니메이션
-  div.content_wrap.change{
+  div.content_wrap.change {
     width: 1200px;
     height: 850px;
     margin: 0 auto;
     padding: 140px 0 0 0;
     overflow: hidden;
     display: flex;
-    @media only screen and (max-width: 1200px){
-      width:100%;
+    @media only screen and (max-width: 1200px) {
+      width: 100%;
       padding: 80px 30px 0 30px;
     }
-    @media only screen and (max-width: 1150px ){
-      width:100%;
+    @media only screen and (max-width: 1150px) {
+      width: 100%;
       padding: 50px 20px 0 20px;
       display: block;
     }
-    @media only screen and (max-width: 767px ){
-      width:100%;
+    @media only screen and (max-width: 767px) {
+      width: 100%;
       padding-top: 80px;
     }
-   
-    div.text{ 
+
+    div.text {
       //animation
       position: relative;
       opacity: 1;
@@ -818,97 +812,96 @@ const Page2 = styled.div`
       display: inline-block;
       width: 600px;
       margin-right: auto;
-      @media only screen and (max-width: 1150px){
+      @media only screen and (max-width: 1150px) {
         display: block;
         width: 100%;
         .hidden {
           display: none;
         }
       }
-      p.text_title{
+      p.text_title {
         font-size: 22px;
         padding-bottom: 8px;
         color: #fdbf1e;
       }
-      p{
+      p {
         font-size: 32px;
         font-weight: 600;
         line-height: 1.6;
         letter-spacing: 1px;
         color: #191f28;
       }
-      p.text_sma{
+      p.text_sma {
         padding-top: 20px;
         font-size: 24px;
         font-weight: 600;
         line-height: 1.6;
         letter-spacing: 1px;
         color: #333d4b;
-        @media only screen and (max-width: 1150px){
+        @media only screen and (max-width: 1150px) {
           padding-top: 10px;
           font-size: 20px;
         }
       }
     }
-    div.img{
+    div.img {
       display: flex;
-      @media only screen and (max-width: 1200px){
-         margin-left: 30px;
+      @media only screen and (max-width: 1200px) {
+        margin-left: 30px;
       }
-      @media only screen and (max-width: 1150px){
+      @media only screen and (max-width: 1150px) {
         width: 100%;
         display: block;
         margin: 0 auto;
       }
-      @media only screen and (max-width: 767px){
-        max-width: 100%; height: auto;
-      }  
-      
-      
+      @media only screen and (max-width: 767px) {
+        max-width: 100%;
+        height: auto;
+      }
+
       img {
         display: inline-block;
-        width:300px;
+        width: 300px;
         height: 570px;
         border-radius: 20px;
-        border: 1px solid rgba(0,0,0,0.05);
+        border: 1px solid rgba(0, 0, 0, 0.05);
         box-shadow: 2px 4px 7px 1px #00000012;
-        @media only screen and (max-width: 1150px){
+        @media only screen and (max-width: 1150px) {
           margin: 50px 0 0 0;
-        } 
-        @media only screen and (max-width: 767px){
-          max-width: 48%; height: auto;
-        }  
+        }
+        @media only screen and (max-width: 767px) {
+          max-width: 48%;
+          height: auto;
+        }
       }
-      img.page2_1{
-         //animation
+      img.page2_1 {
+        //animation
         position: relative;
         opacity: 1;
         top: 0px;
         transition: all 1s ease 0.5s;
       }
-      img.page2_2{
+      img.page2_2 {
         margin-left: 50px;
-        @media only screen and (max-width: 1200px){
+        @media only screen and (max-width: 1200px) {
           margin-left: 10px;
         }
-        @media only screen and (max-width: 1150px){
+        @media only screen and (max-width: 1150px) {
           margin-left: 70px;
-        }  
-        @media only screen and (max-width: 767px){
+        }
+        @media only screen and (max-width: 767px) {
           margin-left: 2%;
-        }    
+        }
 
-         //animation
-         position: relative;
+        //animation
+        position: relative;
         opacity: 1;
         top: 0px;
-        transition: all 1s ease 1s ;
+        transition: all 1s ease 1s;
       }
-    }  
+    }
   }
-  
-`; 
-
+`;
 
 const Wrapper = styled.div`
   //( 기본적용 )모바일 : 768px 이하 ::  @media only제외한 모든 사이즈 적용
@@ -948,9 +941,7 @@ const Wrapper = styled.div`
   } */
 `;
 
-
 const Render = () => {
-  
   const [scrollPosition, setScrollPosition] = useState(0);
   const updateScroll = () => {
     setScrollPosition(window.scrollY || document.documentElement.scrollTop);
@@ -963,131 +954,156 @@ const Render = () => {
   return (
     <>
       <MainArea>
-        <div className='text'>
+        <div className="text">
           <p>바로 만나서</p>
           <p>나와함께</p>
           <p>나눠보아요</p>
-          <p className='txt_sma'>자취생들의 고민을 덜어주는 <br/>식재료 공구 및 나눔 사이트 바나나마켓 입니다.</p>
-          <div className='go_btn'>  
-            <img src={logo_svg} className="logo_icon logo_svg" /> 
-            <span>바로가기</span>
-            <NextIcon className='next_icon' strokeWidth=' 1.8px' stroke='#ffc007'></NextIcon>
-          </div>
+          <p className="txt_sma">
+            자취생들의 고민을 덜어주는 <br />
+            식재료 공구 및 나눔 사이트 바나나마켓 입니다.
+          </p>
+          <Link to="/list">
+            <div className="go_btn">
+              <img src={logo_svg} className="logo_icon logo_svg" />
+              <span>바로가기</span>
+              <NextIcon
+                className="next_icon"
+                strokeWidth=" 1.8px"
+                stroke="#ffc007"
+              ></NextIcon>
+            </div>
+          </Link>
         </div>
       </MainArea>
       <Page1>
-        <div className={scrollPosition < 300 ? 'content_wrap' : 'content_wrap change'}>
-          <div className= 'text'>
-            <div>수박 한통은 <br className='hidden'/>자취생에게 너무 많다구요 ?
-              <br/>장보기메이트를 찾고싶은 이웃을
-              <br/>바나나마켓에서 확인해보세요:D
+        <div
+          className={
+            scrollPosition < 300 ? 'content_wrap' : 'content_wrap change'
+          }
+        >
+          <div className="text">
+            <div>
+              수박 한통은 <br className="hidden" />
+              자취생에게 너무 많다구요 ?
+              <br />
+              장보기메이트를 찾고싶은 이웃을
+              <br />
+              바나나마켓에서 확인해보세요:D
             </div>
-            <div className= 'img_two'>
-              <img className='page1_2' src={page1_2}/>
-              <img className='page1_1' src={page1_1}/>
+            <div className="img_two">
+              <img className="page1_2" src={page1_2} />
+              <img className="page1_1" src={page1_1} />
             </div>
-        </div>
-          <div className='img'>
-            <img className='page1_1' src={page1_1}/>
+          </div>
+          <div className="img">
+            <img className="page1_1" src={page1_1} />
           </div>
         </div>
       </Page1>
       <Page2>
-        <div className={scrollPosition < 1110 ? 'content_wrap' : 'content_wrap change'}>
-          <div className='text'>
-            <p className='text_title'>게시글 작성하기</p>
-            <p>직접 장보기메이트를 
-              <br className='hidden on'/> 찾아 나서볼까요?</p>
-            <p className='text_sma'>이미지와 함께 짧은 글을 작성하고,
-            <br className='hidden on'/> 지도를 통해 장소를 선택해주세요.
-            <br className='hidden on'/> 당신이 찾는 그분이 기다리고 있을거예요!</p>
+        <div
+          className={
+            scrollPosition < 1110 ? 'content_wrap' : 'content_wrap change'
+          }
+        >
+          <div className="text">
+            <p className="text_title">게시글 작성하기</p>
+            <p>
+              직접 장보기메이트를
+              <br className="hidden on" /> 찾아 나서볼까요?
+            </p>
+            <p className="text_sma">
+              이미지와 함께 짧은 글을 작성하고,
+              <br className="hidden on" /> 지도를 통해 장소를 선택해주세요.
+              <br className="hidden on" /> 당신이 찾는 그분이 기다리고
+              있을거예요!
+            </p>
           </div>
-          <div className='img'>
-            <img className='page2_1' src={page2_1}/>
-            <img className='page2_2' src={page2_2}/>
+          <div className="img">
+            <img className="page2_1" src={page2_1} />
+            <img className="page2_2" src={page2_2} />
           </div>
         </div>
-        
       </Page2>
-    <Wrapper>
-      <InfoDiv>
-        <div className="detailDiv">
-          <div className="detail">
-            <h1
-              className={
-                scrollPosition < 1850
-                  ? 'detail_title'
-                  : 'detail_title change_detail_title'
-              }
-            >
-              내 주변 이웃을<br></br>
-              장보기 메이트로 만들어보세요
-            </h1>
-            {/* <p className="small_title">가까운 이웃과 함께라면</p> */}
-            <h3 className="small_title">가까운 이웃과 함께라면</h3>
-            <div className="datail_info">
-              <div
+      <Wrapper>
+        <InfoDiv>
+          <div className="detailDiv">
+            <div className="detail">
+              <h1
                 className={
-                  scrollPosition < 2100
-                    ? 'detail_box'
-                    : 'detail_box change_detail_box'
+                  scrollPosition < 1850
+                    ? 'detail_title'
+                    : 'detail_title change_detail_title'
                 }
               >
-                <div className="datail_box_icon">
-                  <img src={save_money}></img>
+                내 주변 이웃을<br></br>
+                장보기 메이트로 만들어보세요
+              </h1>
+              {/* <p className="small_title">가까운 이웃과 함께라면</p> */}
+              <h3 className="small_title">가까운 이웃과 함께라면</h3>
+              <div className="datail_info">
+                <div
+                  className={
+                    scrollPosition < 2100
+                      ? 'detail_box'
+                      : 'detail_box change_detail_box'
+                  }
+                >
+                  <div className="datail_box_icon">
+                    <img src={save_money}></img>
+                  </div>
+                  <p>식재료비 절약</p>
+                  <span>
+                    부담되었던 식재료비를<br></br>절약할 수 있습니다
+                  </span>
                 </div>
-                <p>식재료비 절약</p>
-                <span>
-                  부담되었던 식재료비를<br></br>절약할 수 있습니다
-                </span>
-              </div>
-              <div
-                className={
-                  scrollPosition < 2100
-                    ? 'detail_box'
-                    : 'detail_box change_detail_box'
-                }
-              >
-                <div className="datail_box_icon">
-                  <img src={reduction}></img>
+                <div
+                  className={
+                    scrollPosition < 2100
+                      ? 'detail_box'
+                      : 'detail_box change_detail_box'
+                  }
+                >
+                  <div className="datail_box_icon">
+                    <img src={reduction}></img>
+                  </div>
+                  <p>음식물 쓰레기 절감</p>
+                  <span>
+                    쓰지 못해 버렸던<br></br>식재료의 양이 줄어듭니다
+                  </span>
                 </div>
-                <p>음식물 쓰레기 절감</p>
-                <span>
-                  쓰지 못해 버렸던<br></br>식재료의 양이 줄어듭니다
-                </span>
               </div>
             </div>
+            <div className="detail_img">
+              <img src={detail_img}></img>
+            </div>
           </div>
-          <div className="detail_img">
-            <img src={detail_img}></img>
+        </InfoDiv>
+        <ChatPage>
+          <div className="chat_img">
+            <div className="img1">
+              <img src={chatListImg}></img>
+            </div>
+            <div className="img2">
+              <img src={chatListImg2}></img>
+            </div>
           </div>
-        </div>
-      </InfoDiv>
-      <ChatPage>
-        <div className="chat_img">
-          <div className="img1">
-            <img src={chatListImg}></img>
+          <div className="chat_info">
+            <h1
+              className={
+                scrollPosition < 2850
+                  ? 'chat_title'
+                  : 'chat_title change_chat_title'
+              }
+            >
+              부담없는 소통
+            </h1>
+            <p className={scrollPosition < 2950 ? 'info' : 'info change_info'}>
+              장보기 메이트와 <br></br>
+              실시간으로 소통해보세요.
+            </p>
           </div>
-          <div className="img2">
-            <img src={chatListImg2}></img>
-          </div>
-        </div>
-        <div className="chat_info">
-          <h1
-            className={
-              scrollPosition < 2850
-                ? 'chat_title'
-                : 'chat_title change_chat_title'
-            }
-          >
-            부담없는 소통
-          </h1>
-          <p className={scrollPosition < 2950 ? 'info' : 'info change_info'}>
-            장보기 메이트와 <br></br>
-            실시간으로 소통해보세요.
-          </p>
-        </div>
-      </ChatPage>
+        </ChatPage>
       </Wrapper>
     </>
   );
