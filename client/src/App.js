@@ -29,7 +29,6 @@ import Logout from './pages/Logout';
 import CheckPersonalInform from './pages/CheckPersonalInform';
 import EditPosting from './pages/EditPosting';
 import AdminPage from './pages/AdminPage';
-
 function App(props) {
   const history = useHistory();
   let setLoginState = useSelector((state) => state.setLoginReducer);
@@ -52,8 +51,12 @@ function App(props) {
         }
         dispatch({ type: 'SET_UPDATE_USER_INFO', payload: res.data.data });
         dispatch(setLogin());
-
+        console.log(setUserInfo);
+        if (setUserInfo.type === null) {
+          console.log('널이다');
+        }
         if (setUserInfo.type === 'ADMIN') {
+          console.log('어드민이다');
           dispatch(setAdminLogin());
           console.log(setUserInfo.type);
         } else if (setUserInfo.block) {

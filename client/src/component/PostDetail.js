@@ -12,12 +12,19 @@ import chat_sma from '../icon/chat_sma.png'
 const { kakao } = window;
 
 const DetailDiv = styled.div`
-  max-width: 1200px;
+  /* max-width: 1200px; */
   /* background-color: powderblue; */
-  margin: 70px auto 70px auto;
+  /* margin: 70px auto 70px auto;
   @media screen and (max-width: 1200px) {
     margin: 70px auto 60px auto;
   }
+  @media screen and (max-width: 767px) {
+    margin: 80px auto 30px auto;
+    width: 100%;
+  } */
+  max-width: 1200px;
+  /* background-color: powderblue; */
+  margin: 41px auto;
   @media screen and (max-width: 767px) {
     margin: 80px auto 30px auto;
     width: 100%;
@@ -26,14 +33,23 @@ const DetailDiv = styled.div`
     width: 440px;
     border: 1px solid #ecede8;
     box-sizing: border-box;
-    padding: 30px;
     margin: 0 auto;
+    padding-bottom: 20px;
+    background-color: white;
     /* background-color: peachpuff; */
     border-radius: 10px;
     box-shadow: 1px 1px 5px 0px #00000014;
     @media screen and (max-width: 767px) {
       width: 90%;
     }
+    /* width: 440px;
+    border: 1px solid #ecede8;
+    box-sizing: border-box;
+    padding: 30px;
+    margin: 0 auto;
+    /* background-color: peachpuff; */
+    /* border-radius: 10px;
+    box-shadow: 1px 1px 5px 0px #00000014; */
     /* padding-top: 20px; */
   }
 
@@ -83,42 +99,66 @@ const DetailDiv = styled.div`
     box-sizing: border-box;
     margin: 20px auto 0 auto;
     border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px 0px #00000014;
+    background-color: #3999ff;
+    color: #fbfff1;
+    /* text-align:center;
+    width: 440px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    box-sizing: border-box;
+    margin: 20px auto 0 auto;
+    border-radius: 10px;
     box-shadow: 1px 1px 5px 0px #00000014;
     border: 0px;
     background-color: #3999ff;
-    color: #fbfff1;
-    cursor: pointer;
+    color: #fbfff1; */
+  @media screen and (max-width: 767px) {
+      margin: 25px auto 0 auto;
+      width: 90%;
+      border: 0px;
+    }
   }
 `;
 
 const UlDiv = styled.ul`
-  width: 100%;
+  width: 380px;
   /* background-color: rebeccapurple; */
   margin: 0 auto;
   border-radius: 10px;
   @media screen and (max-width: 767px) {
+    width: 100%;
+    margin: 0;
   }
   .profile {
+    padding-top: 30px;
     width: 100%;
-    height: 90px;
+    height: 120px;
     border-bottom: 1px dashed #c6c6c6;
     box-sizing: border-box;
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto;
     @media screen and (max-width: 767px) {
-      height: 85px;
+      width: 90%;
     }
     > .in_grid {
       display: grid;
       grid-template-columns: 1.5fr 0.5fr;
-      @media screen and (max-width: 1200px) {
-      }
-      @media screen and (max-width: 768px) {
-      }
+     
       > li.image {
         height: 70px;
         width: 70px;
         margin-left: auto;
         border-radius: 50px;
+        img{
+          display: block;
+          border-radius: 100px;
+          border: 1px solid #dcdfd5;
+          width: 100%;
+          height: 100%;
+        }
       }
       > li.profile_info {
         height: 70px;
@@ -154,17 +194,19 @@ const UlDiv = styled.ul`
       }
     }
   }
-  .title {
+  li.title {
     width: 100%;
-    margin-top: 30px;
-    margin-bottom: 8px;
+    margin: 30px 0 8px 0;
     color: #2f2f2f;
     /* background-color: salmon; */
     box-sizing: border-box;
     font-weight: 500;
     font-size: 20px;
     line-height: 30px;
+    
     @media screen and (max-width: 767px) {
+      width: 90%;
+      margin: 30px auto 8px auto;
     }
   }
   .others{
@@ -172,6 +214,10 @@ const UlDiv = styled.ul`
       color:#bebebe;
       font-size: 15px;
       font-weight: 500;
+    }
+    @media screen and (max-width: 767px) {
+      width: 90%;
+      margin: 0 auto;
     }
   }
   .content {
@@ -183,6 +229,10 @@ const UlDiv = styled.ul`
     font-weight: 400;
     line-height: 28px;
     color: #3f3f3f;
+    @media screen and (max-width: 767px) {
+      width: 90%;
+      margin: 0 auto;
+    }
     >div{
       margin-top:30px;
       margin-bottom: 30px;
@@ -190,9 +240,14 @@ const UlDiv = styled.ul`
     >img{
       border-radius: 8px;
       margin-bottom: 5px;
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 767px) {
       width: 100%;
-      }
+      margin: 0 auto;
+    }
+    }
+    @media screen and (max-width: 767px) {
+      width: 90%;
+      margin: 0 auto;
     }
   }
   > li.trade_info{
@@ -204,8 +259,9 @@ const UlDiv = styled.ul`
     font-size: 16px;
     line-height: 28px;
     color:#9da2b5;
-    @media screen and (max-width: 768px) {
-      width: 100%;
+    @media screen and (max-width: 767px) {
+      width: 90%;
+      margin: 0 auto;
     }
     >div >img{
       opacity: 0.8;
@@ -261,8 +317,9 @@ const UlDiv = styled.ul`
       border-radius: 8px 8px 0 0 ;
       box-sizing: border-box;
     }
-    @media screen and (max-width: 768px) {
-      width: 100%;
+    @media screen and (max-width: 767px) {
+      width: 90%;
+      margin: 0 auto;
     }
   }
 `;
@@ -307,11 +364,11 @@ const PostDetail = ({ chatListDetail, handleClick }) => {
       })
       .catch((err) => {
         console.log(err);
-        if(String(err).includes('404')){
-          alert('작성자가 없거나, 존재하지 않는 게시물 입니다')
+        if (String(err).includes('404')) {
+          alert('작성자가 없거나, 존재하지 않는 게시물 입니다');
         }
 
-        history.push('/list')
+        history.push('/list');
       });
   };
   useEffect(() => {
@@ -463,11 +520,7 @@ const PostDetail = ({ chatListDetail, handleClick }) => {
         ) : (
           <div
             className="btn btn_css"
-            onClick={() => {
-              // handleClick();
-              joinChat(post.id);
-              history.push('/chat/0');
-            }}
+            z
           >
             참여하기
           </div>

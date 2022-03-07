@@ -246,7 +246,7 @@ const ListHeader = styled.div`
     /* border: 1px solid #feb763; */
     color: #2d534d;
     font-size:16px;
-    background-color: #ebf4f37d;
+    background-color: #ebf4f3cf;
     transition: all 0.2s linear;
     box-sizing: content;
     &:hover{
@@ -265,7 +265,7 @@ const ListHeader = styled.div`
   >div.selectBox{
     margin-left: auto;
     select.sort:hover {
-      border-color: #ebf4f37d;
+      border-color: #ebf4f3cf;
       background-color: #dce9e67d;
       box-shadow: 2px 4px 7px 1px #00000012;
     }
@@ -450,10 +450,10 @@ const ListDeTail = styled.div`
   min-height: 150px;
   border-radius: 10px;
   cursor: ${(props) => (props.status ? 'pointer' : '')};
-  background-color: ${(props) => (props.status ? '#fafafa' : '#9eadba')};
+  background-color: ${(props) => (props.status ? '#fafafa' : '#dde3e7')};
   /* background-color: ${(props) => (props.status ? '#fafafa' : '#9eadba')}; */
   box-shadow: ${(props) => (props.status ? '2px 4px 7px 1px #00000012;' : '')};
-  opacity: ${(props) => (props.status ? '' : '0.3')};
+  opacity: ${(props) => (props.status ? '' : '0.2')};
   transition: all 0.2s linear;
   &:hover {
     position: relative;
@@ -527,7 +527,7 @@ const ListDeTail = styled.div`
           text-align: center;
           display: inline-block;
           width: 38px;
-          font-size: 14px;
+          font-size: 13px;
           border-radius: 3px;
           font-weight: 600;
           line-height: 19px;
@@ -540,7 +540,7 @@ const ListDeTail = styled.div`
           text-align: center;
           display: inline-block;
           width: 38px;
-          font-size: 14px;
+          font-size: 13px;
           border-radius: 3px;
           font-weight: 600;
           line-height: 19px;
@@ -569,16 +569,16 @@ const ListDeTail = styled.div`
         @media screen and (max-width: 768px) {
           font-size: 16px;
           margin-top: 6px;
-         
+/*          
           >span.share{
             display: inline-block;
             font-size: 14px;
             border-radius: 3px;
             font-weight: 600;
-            padding: 0 5px;
+            padding: 0 5px; */
             /* background-color: #f4f4f4; */
-            border: 1px solid #99b376;
-            color:#99b376;
+            /* border: 1px solid #99b376;
+            color:#99b376; */
           }
           >span.title_text{
             font-size: 17px;

@@ -3,7 +3,7 @@ import PostingWrite from '../component/PostingWrite';
 
 const Posting = () => {
   return (
-    <div className='section'>
+    <div className="section2">
       <PostingWrite></PostingWrite>
     </div>
   );

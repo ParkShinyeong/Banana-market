@@ -26,6 +26,26 @@ import { ReactComponent as TopIcon } from '../icon/top_icon.svg';
 const BREAK_POINT_TABLET = 768;
 const BREAK_POINT_PC = 1200;
 
+const TopButton = styled.div`
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  border-radius: 100px;
+  background-color: #bfd780;
+  box-shadow: 2px 4px 7px 1px #00000012;
+  bottom: 25px;
+  right: 16px;
+  padding-top: 3px;
+  z-index: 10;
+  display: block;
+  &.hidden{
+    display: none;
+  }
+  svg {
+    padding: 12px 18px;
+    opacity: 0.9;
+  }
+`;
 const MenuModalWrapper = styled.div`
   position: absolute;
   width: 100%;
@@ -278,9 +298,9 @@ const Header = ({ handleResponseSuccess }) => {
 
   return (
     <>
-      {/* <div className='top_btn'>
-      <TopIcon stroke='red'></TopIcon>
-      </div> */}
+      <TopButton className={scrollPosition > 400? '' : 'hidden'} onClick={toTheTop}>
+        <TopIcon ></TopIcon>
+      </TopButton>
       {searchBox ? (
         <SearchModalWrapper>
           <SearchModal
@@ -342,25 +362,29 @@ const Header = ({ handleResponseSuccess }) => {
             </div>
           </div>
           <div className="menu_wrapper">
-            { setAdminLoginState ? 
-                <div  className="icon admin" onClick={()=> {
-                  history.push('/admin')
-                }}> 관리자 </div>
-                : 
-                ( setLoginState ? 
-                  <div></div>
-                  : (
-                    <div className="icon login_icon">
-                      <PersonIcon
-                        className="icon_img login_img"
-                        stroke="#4d4c54"
-                        stroke-width="1.5px"
-                        onClick={() => {
-                          setLoginModal(true);
-                        }}
-                      ></PersonIcon>
-                    </div>
-                  ))}
+            {setAdminLoginState ? (
+              <div
+                className="icon admin"
+                onClick={() => {
+                  history.push('/admin');
+                }}
+              >
+                관리자
+              </div>
+            ) : setLoginState ? (
+              <div></div>
+            ) : (
+              <div className="icon login_icon">
+                <PersonIcon
+                  className="icon_img login_img"
+                  stroke="#4d4c54"
+                  strokeWidth="1.5px"
+                  onClick={() => {
+                    setLoginModal(true);
+                  }}
+                ></PersonIcon>
+              </div>
+            )}
             <Link to={setLoginState ? '/chat/0' : '/nullpage'}>
               <div className="icon chat_icon">
                 <ChatIcon stroke="#4d4c54"></ChatIcon>

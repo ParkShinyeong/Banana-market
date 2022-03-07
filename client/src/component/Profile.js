@@ -146,13 +146,13 @@ const UlDiv = styled.ul`
         border: 2px solid #f4b600;
       }
       div.text_id {
+        margin: 0;
         width: 100px;
-        padding-top: 24px;
+        padding: 24px 0 0 0;
         font-size: 26px;
         color: #393a3b8c;
         font-weight: 500;
         line-height: 20px;
-        padding-right: 20px;
       }
       div.text_trade {
         margin-top: 8px;

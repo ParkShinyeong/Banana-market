@@ -58,7 +58,9 @@ const MapModalWrapper = styled.div`
           background-color: white;
           /* border: solid 1.5px #dadfe5; */
           overflow: hidden;
+          display: flex;
           border:2px solid #ededed;
+
           > input.input {
             line-height: 45px;
             width: 236px;
@@ -73,17 +75,15 @@ const MapModalWrapper = styled.div`
             }
           }
           > div.search_btn {
+            margin-left: auto;
             line-height: 38px;
             text-align: center;
-            float: right;
-            margin-right: 16px;
             width:36px;
             height: 40px;
             outline: 0;
             top: 7px;
             > .search_icon {
               width: 16px;
-              margin-right: -18px;
               padding-top: 13px;
             }
           }
@@ -333,15 +333,14 @@ const MapModalWrapper = styled.div`
           margin-bottom: 30px;
           > div.search_box {
             width: calc(100% - 44px);
-            padding: 0 22px;
+            padding: 0 10px 0 22px;
             margin: 0px 0px 0px 22px;
             > input.input {
               width: 80%;
               margin: 0;
             }
             > div.search_btn {
-              width: 20%;
-              margin-right: -30px;
+              margin-left: auto;
             }
           }
           > div#markList{

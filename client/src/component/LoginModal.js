@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, {keyframes}  from 'styled-components';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import github_icon from '../icon/github_icon.png';
@@ -11,6 +11,18 @@ import { setLogin, setLogout } from '../redux/actions/actions';
 
 // axios.defaults.withCredentials = true;
 
+const  boxFade = keyframes` {
+  0% {
+  opacity: 0;
+  }
+  50% {
+  opacity: 0.15;
+  }
+  100% {
+  opacity: 0.25;
+  }
+}
+`;
 const Login_div = styled.div`
   position: fixed;
   top: 0;
@@ -38,16 +50,27 @@ const Login_div = styled.div`
       float: right;
       font-size: 30px;
       cursor: pointer;
+      position: relative;
+      top:10px;
+      right: 10px;
+      opacity: 0.5;
     }
     > .login_div {
       letter-spacing: 3px;
       width: 300px;
       box-sizing: border-box;
-      margin: 65px auto 0 auto;
+      margin: 100px auto 0 auto;
+      /* > p.welcome_ment {
+        font-style: 8px;
+        margin-bottom: 10px;
+        opacity: 0;
+        position: relative;
+        transition: all 0.2s linear;
+        animation: ${boxFade} 3s 1s forwards;
+      } */
       > p {
-        margin-top: 100px;
-        margin-bottom: 30px;
-        opacity: 0.6;
+        /* margin-top: 100px; */
+        margin-bottom: 40px;
         /* color:#626262; */
         font-family: Raleway;
       }
@@ -199,9 +222,9 @@ const LoginModal = ({ loginModal, setLoginModal, handleResponseSuccess }) => {
               fontSize: '28px',
               fontWeight: 'bold',
               textAlign: 'center',
-              color: '#2b2828',
+              color: '#a1d026',
             }}
-          >
+          > 
             BANANA MARKET
           </p>
           <input

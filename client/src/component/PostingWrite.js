@@ -31,7 +31,7 @@ const MapModalWrapper = styled.div`
 const Wrapper = styled.div`
   max-width: 1200px;
   /* background-color: powderblue; */
-  margin: 50px auto;
+  margin: 41px auto;
   @media screen and (max-width: 767px) {
     margin: 80px auto 30px auto;
     width: 100%;
@@ -58,14 +58,14 @@ const Wrapper = styled.div`
     line-height: 50px;
     font-size: 18px;
     font-weight: 500;
-    background-color: #ececec;
-    border: 1px solid #eaeaea;
-    color: #aeaeae;
     box-sizing: border-box;
     margin: 20px auto 0 auto;
     border-radius: 10px;
     cursor: pointer;
     box-shadow: 1px 1px 5px 0px #00000014;
+    background-color: #ececec;
+    border: 1px solid #eaeaea;
+    color: #aeaeae;
     &:hover {
       border: 0px;
       background-color: #ff4342;
@@ -76,7 +76,7 @@ const Wrapper = styled.div`
       width: 90%;
       border: 0px;
       background-color: #ff4342;
-      color:#ffe1e0;
+      color: #ffe1e0;
     }
   }
 `;
@@ -610,7 +610,7 @@ const PostingWrite = () => {
                 name="about"
                 value="jointPurchase"
                 defaultChecked
-                onClicks={handleClickRadioBox}
+                onClick={handleClickRadioBox}
               />
               <label htmlFor="buy">&nbsp;&nbsp;공구</label>
               {/* <img src={check_icon} /> */}
