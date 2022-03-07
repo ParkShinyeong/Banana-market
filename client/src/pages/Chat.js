@@ -8,7 +8,7 @@ import axios from 'axios';
 // socket 연결
 import io from 'socket.io-client';
 const endpoint = 'http://localhost:3001';
-const chatroom = `${process.env.REACT_APP_API_HTTP_URL}/chatroom`;
+const chatroom = `${endpoint}/chatroom`;
 const socket = io.connect(chatroom, {
   withCredentials: true,
 });
@@ -39,6 +39,8 @@ const Chat = () => {
   const [display, setDisplay] = useState('none');
   const [display1, setDisplay1] = useState('block');
   const [chatRoomId, setChatRoomId] = useState(0);
+  let [listDisplay, setListDisplay] = useState(true);
+  let [roomDisplay, setRoomDisplay] = useState(false);
   const ListData = useSelector((state) => state.chatListReducer);
   const [title, setTitle] = useState('');
   const dispatch = useDispatch();
@@ -76,30 +78,16 @@ const Chat = () => {
     };
   }, []);
 
-  const onClick1 = () => {
-    display === 'none' ? setDisplay('block') : setDisplay('none');
-  };
-  const onClick2 = () => {
-    display === 'block' ? setDisplay('none') : setDisplay('block');
-  };
-
-  // const onClick = () => {
-  //   display === 'none' ? setDisplay('block') : setDisplay('none');
-  //   display1 === 'block' ? setDisplay1('none') : setDisplay1('block');
-  // };
-  // const onClick2 = () => {
-  //   display === 'block' ? setDisplay('none') : setDisplay('none');
-  //   display1 === 'none' ? setDisplay1('block') : setDisplay1('block');
-  // };
-
   return (
     <div className="section2">
       <ChatDiv>
         <ChatList
           enterance={enterance}
           setEnterance={setEnterance}
-          display={display}
-          onClick2={onClick2}
+          setListDisplay={setListDisplay}
+          listDisplay={listDisplay}
+          setRoomDisplay={setRoomDisplay}
+          roomDisplay={roomDisplay}
           chatRoomId={chatRoomId}
           setChatRoomId={setChatRoomId}
           setTitle={setTitle}
@@ -108,8 +96,10 @@ const Chat = () => {
           enterance={enterance}
           setEnterance={setEnterance}
           chatRoomId={chatRoomId}
-          onClick2={onClick2}
-          onClick1={onClick1}
+          setListDisplay={setListDisplay}
+          listDisplay={listDisplay}
+          setRoomDisplay={setRoomDisplay}
+          roomDisplay={roomDisplay}
           setChatRoomId={setChatRoomId}
           title={title}
         ></ChatRoom>

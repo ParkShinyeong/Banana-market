@@ -5,9 +5,9 @@ import { postListDelete } from '../redux/actions/actions';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
-import spot_sma from '../icon/spot_sma.png'
-import clock_sma from '../icon/clock_sma.png'
-import chat_sma from '../icon/chat_sma.png'
+import spot_sma from '../icon/spot_sma.png';
+import clock_sma from '../icon/clock_sma.png';
+import chat_sma from '../icon/chat_sma.png';
 
 const { kakao } = window;
 
@@ -78,11 +78,11 @@ const DetailDiv = styled.div`
       margin-top: 20px;
       cursor: pointer;
       @media screen and (max-width: 767px) {
-        width: 49% ;
+        width: 49%;
         justify-content: flex-end;
       }
     }
-    > div.delete_btn {      
+    > div.delete_btn {
       margin-left: auto;
       background-color: #ff4342;
       color: #ffe1e0;
@@ -90,7 +90,7 @@ const DetailDiv = styled.div`
     }
   }
   .btn {
-    text-align:center;
+    text-align: center;
     width: 440px;
     height: 50px;
     line-height: 50px;
@@ -116,7 +116,7 @@ const DetailDiv = styled.div`
     border: 0px;
     background-color: #3999ff;
     color: #fbfff1; */
-  @media screen and (max-width: 767px) {
+    @media screen and (max-width: 767px) {
       margin: 25px auto 0 auto;
       width: 90%;
       border: 0px;
@@ -146,13 +146,13 @@ const UlDiv = styled.ul`
     > .in_grid {
       display: grid;
       grid-template-columns: 1.5fr 0.5fr;
-     
+
       > li.image {
         height: 70px;
         width: 70px;
         margin-left: auto;
         border-radius: 50px;
-        img{
+        img {
           display: block;
           border-radius: 100px;
           border: 1px solid #dcdfd5;
@@ -169,14 +169,14 @@ const UlDiv = styled.ul`
           font-weight: 600;
           font-size: 16px;
           margin-top: 3px;
-          color:#2929298c;
+          color: #2929298c;
           @media screen and (max-width: 768px) {
           }
         }
         .location {
           font-size: 15px;
           margin-top: 3px;
-          color:#393a3b8c;
+          color: #393a3b8c;
           @media screen and (max-width: 768px) {
           }
         }
@@ -203,15 +203,15 @@ const UlDiv = styled.ul`
     font-weight: 500;
     font-size: 20px;
     line-height: 30px;
-    
+
     @media screen and (max-width: 767px) {
       width: 90%;
       margin: 30px auto 8px auto;
     }
   }
-  .others{
-    .text{
-      color:#bebebe;
+  .others {
+    .text {
+      color: #bebebe;
       font-size: 15px;
       font-weight: 500;
     }
@@ -233,24 +233,24 @@ const UlDiv = styled.ul`
       width: 90%;
       margin: 0 auto;
     }
-    >div{
-      margin-top:30px;
+    > div {
+      margin-top: 30px;
       margin-bottom: 30px;
     }
-    >img{
+    > img {
       border-radius: 8px;
       margin-bottom: 5px;
       @media screen and (max-width: 767px) {
-      width: 100%;
-      margin: 0 auto;
-    }
+        width: 100%;
+        margin: 0 auto;
+      }
     }
     @media screen and (max-width: 767px) {
       width: 90%;
       margin: 0 auto;
     }
   }
-  > li.trade_info{
+  > li.trade_info {
     width: 380px;
     background-color: #ebedf47d;
     border: 1px solid #dadeec7d;
@@ -258,19 +258,19 @@ const UlDiv = styled.ul`
     padding: 20px 15px 20px 15px;
     font-size: 16px;
     line-height: 28px;
-    color:#9da2b5;
+    color: #9da2b5;
     @media screen and (max-width: 767px) {
       width: 90%;
       margin: 0 auto;
     }
-    >div >img{
+    > div > img {
       opacity: 0.8;
     }
     .spot {
-      img.icon_sma{
+      img.icon_sma {
         height: 13px;
       }
-      .map_btn{
+      .map_btn {
         margin-top: 20px;
         line-height: 40px;
         height: 40px;
@@ -283,12 +283,12 @@ const UlDiv = styled.ul`
     }
     .date {
       margin-bottom: 10px;
-      >span{
+      > span {
         font-size: 12px;
         margin-bottom: 2px;
         color: #9b9b9b;
       }
-      img.icon_sma{
+      img.icon_sma {
         width: 13px;
       }
       @media screen and (max-width: 768px) {
@@ -296,25 +296,25 @@ const UlDiv = styled.ul`
     }
     .pepole {
       margin-bottom: 10px;
-      >span{
+      > span {
         font-size: 12px;
         margin-bottom: 2px;
         color: #9b9b9b;
       }
-      img.icon_sma{
+      img.icon_sma {
         width: 13px;
       }
       @media screen and (max-width: 768px) {
       }
     }
   }
- 
+
   .map {
     width: 380px;
     .map_image {
       height: 300px;
       border: 1px solid #dadeec7d;
-      border-radius: 8px 8px 0 0 ;
+      border-radius: 8px 8px 0 0;
       box-sizing: border-box;
     }
     @media screen and (max-width: 767px) {
@@ -463,11 +463,11 @@ const PostDetail = ({ chatListDetail, handleClick }) => {
                 </li>
               </ul>
             </div>
-            <li className="title">
-              {post.title}
-            </li>
-            <li className='others'>
-              <span className='text'>{post.tradeType} &#183; {post.category}</span>
+            <li className="title">{post.title}</li>
+            <li className="others">
+              <span className="text">
+                {post.tradeType} &#183; {post.category}
+              </span>
             </li>
             <li className="content">
               <div>{post.content}</div>
@@ -478,20 +478,22 @@ const PostDetail = ({ chatListDetail, handleClick }) => {
             </li>
             <li className="trade_info">
               <div className="date">
-                <img className='icon_sma' src={clock_sma}/>
+                <img className="icon_sma" src={clock_sma} />
                 &nbsp;&nbsp;{post.date}&nbsp;, {post.time}
               </div>
               <div className="pepole">
-                <img className='icon_sma' src={chat_sma}/>
-                &nbsp;&nbsp;지금 {post.currentMate}명  <span>&nbsp;&#124;&nbsp;</span> 전체 {post.totalMate}명
+                <img className="icon_sma" src={chat_sma} />
+                &nbsp;&nbsp;지금 {post.currentMate}명{' '}
+                <span>&nbsp;&#124;&nbsp;</span> 전체 {post.totalMate}명
               </div>
-              <div className="spot"> 
-                <img className='icon_sma' src={spot_sma}/>  
+              <div className="spot">
+                <img className="icon_sma" src={spot_sma} />
                 &nbsp;&nbsp; {post.market} ( {post.address} ){' '}
-                <div className="map_btn btn_css"
-                onClick={() => window.open(`${post.url}`, '_blank')}
-                  >
-                    장소 정보 더보기
+                <div
+                  className="map_btn btn_css"
+                  onClick={() => window.open(`${post.url}`, '_blank')}
+                >
+                  장소 정보 더보기
                 </div>
               </div>
             </li>
@@ -523,7 +525,7 @@ const PostDetail = ({ chatListDetail, handleClick }) => {
             onClick={() => {
               // handleClick();
               joinChat(post.id);
-              history.push('/chat/0');
+              history.push('/chat');
             }}
             className="btn btn_css"
           >

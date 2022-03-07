@@ -49,20 +49,6 @@ module.exports = async (req, res) => {
     region,
   } = articleInfo;
   let { imageKey } = articleInfo;
-  if (tradeType) {
-    articleInfo['trade_type'] = tradeType;
-    delete articleInfo.tradeType;
-    if (!imageKey) {
-      if (tradeType === 'share') {
-        imageKey = 'shareDefaultImage.jpeg';
-      } else {
-        imageKey = 'jointPurchaseDefaultImage.jpeg';
-      }
-    }
-
-    // delete articleInfo.tradeType;
-    // articleInfo.image_location = location;
-  }
 
   if (totalMate) {
     articleInfo['total_mate'] = totalMate;
@@ -90,21 +76,41 @@ module.exports = async (req, res) => {
 
   // 이미 이미지가 있으면 삭제 후 업로드
   const originalImageKey = originalData.dataValues.image_key;
-
-  if (
-    originalImageKey !== 'jointPurchaseDefaultImage.jpeg' &&
-    originalImageKey !== 'shareDefaultImage.jpeg'
-  ) {
-    const params = {
-      Bucket: 'banana-mk-image',
-      Key: originalImageKey,
-    };
-    try {
-      deleteImage(params);
-    } catch (err) {
-      console.log(err);
-      return res.status(500).send({ message: '' });
+  if (imageKey) {
+    if (
+      originalImageKey !== 'jointPurchaseDefaultImage.jpeg' &&
+      originalImageKey !== 'shareDefaultImage.jpeg'
+    ) {
+      const params = {
+        Bucket: 'banana-mk-image',
+        Key: originalImageKey,
+      };
+      try {
+        deleteImage(params);
+      } catch (err) {
+        console.log(err);
+        return res.status(500).send({ message: '' });
+      }
     }
+  } else {
+    imageKey = originalImageKey;
+  }
+
+  if (tradeType) {
+    articleInfo['trade_type'] = tradeType;
+    delete articleInfo.tradeType;
+    if (
+      imageKey === 'shareDefaultImage.jpeg' ||
+      imageKey === 'jointPurchaseDefaultImage.jpeg'
+    ) {
+      if (tradeType === 'share') {
+        imageKey = 'shareDefaultImage.jpeg';
+      } else {
+        imageKey = 'jointPurchaseDefaultImage.jpeg';
+      }
+    }
+
+    delete articleInfo.tradeType;
   }
 
   articleInfo['image_key'] = imageKey;

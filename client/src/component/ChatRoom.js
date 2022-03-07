@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useHistory, useParams, Route } from 'react-router-dom';
 import SetModal from './SetModal';
 import { useSelector, useDispatch } from 'react-redux';
-// import ScrollToBottom from 'react-scroll-to-bottom';
+import ScrollToBottom from 'react-scroll-to-bottom';
 import logo_svg from '../icon/logo.svg';
 import send_img from '../icon/send-mail.png';
 import send_img2 from '../icon/paper-plane.png';
@@ -15,7 +15,7 @@ import axios from 'axios';
 // socket 연결
 import io from 'socket.io-client';
 const endpoint = 'http://localhost:3001';
-const chatroom = `${process.env.REACT_APP_API_HTTP_URL}/chatroom`;
+const chatroom = `${endpoint}/chatroom`;
 const socket = io.connect(chatroom, {
   withCredentials: true,
 });
@@ -36,7 +36,8 @@ const ChatRoomDiv = styled.div`
     /* display: none; */
     box-shadow: none;
     width: 100%;
-    display: ${(props) => props.display};
+    display: ${(props) => (props.roomDisplay ? 'block' : 'none')};
+    /* display: ${(props) => props.display}; */
   }
   .chat_title {
     width: 100%;
@@ -226,6 +227,7 @@ const ChatRoomDiv = styled.div`
         background-color: transparent; // Background-color 투명 or 배경 없애기
         border: 0;
         outline: 0;
+        /* background-color: cornsilk; */
         border-radius: 50px;
         margin-top: 6px;
         cursor: pointer;
@@ -236,6 +238,7 @@ const ChatRoomDiv = styled.div`
         img {
           width: 100%;
           height: 100%;
+          border-radius: 50px;
         }
       }
     }
@@ -332,6 +335,7 @@ const ChatRoomWrap = styled.div`
   border-left: none;
   @media screen and (max-width: 768px) {
     min-height: 737px;
+    display: none;
   }
   .logo_img {
     width: 300px;
@@ -356,6 +360,10 @@ const ChatRoom = ({
   setEnterance,
   onClick,
   onClick2,
+  roomDisplay,
+  setRoomDisplay,
+  setListDisplay,
+  listDisplay,
 }) => {
   const history = useHistory();
   const [secessionModal, setSecessionModal] = useState(false);
@@ -458,7 +466,7 @@ const ChatRoom = ({
             createdAt: timeSetting(createdAt),
           },
         });
-        // scrollToBottomSend();
+        scrollToBottomSend();
         // scrollToElement(); //
       },
       (error) => {
@@ -625,13 +633,13 @@ const ChatRoom = ({
   return (
     <Route path={'/chat/' + chatRoomId}>
       {title ? (
-        <ChatRoomDiv>
+        <ChatRoomDiv listDisplay={listDisplay} roomDisplay={roomDisplay}>
           <div className="chat_title">
             <BackBtn
               className="back_btn"
               onClick={() => {
-                onClick2();
-                history.push('/chat');
+                setRoomDisplay(false);
+                setListDisplay(true);
               }}
             >
               <img src={back_btn}></img>
@@ -652,7 +660,7 @@ const ChatRoom = ({
             </div>
           </div>
           <div className="chat_room">
-            <div className="chatContent">
+            <ScrollToBottom className="chatContent">
               {enterance ? (
                 message.map((el, idx) => (
                   <>
@@ -706,7 +714,7 @@ const ChatRoom = ({
               ) : (
                 <div> 채팅 입장에 실패했습니다. 다시 입장해주세요! </div>
               )}
-            </div>
+            </ScrollToBottom>
             {/* <ChatContent></ChatContent> */}
           </div>
           <div className="chatDiv">

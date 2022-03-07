@@ -84,6 +84,11 @@ const SetModalDiv = styled.div`
           width: 40px;
           height: 40px;
           border-radius: 50px;
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50px;
+          }
         }
         .user_id {
           margin-left: 10px;

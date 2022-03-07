@@ -7,7 +7,7 @@ import axios from 'axios';
 // socket 연결
 import io from 'socket.io-client';
 const endpoint = 'http://localhost:3001';
-const chatroom = `${process.env.REACT_APP_API_HTTP_URL}/chatroom`;
+const chatroom = `${endpoint}/chatroom`;
 const socket = io.connect(chatroom, {
   withCredentials: true,
 });
@@ -27,7 +27,7 @@ const ChatListDiv = styled.div`
   @media screen and (max-width: 767px) {
     border: none;
 
-    display: ${(props) => props.display};
+    display: ${(props) => (props.listDisplay ? 'block' : 'none')};
   }
 
   .titleDiv {
@@ -154,8 +154,11 @@ const ChatList = ({
   chatRoomId,
   setChatRoomId,
   setTitle,
+  listDisplay,
+  setListDisplay,
+  setRoomDisplay,
+  roomDisplay,
   display,
-  onClick2,
 }) => {
   const history = useHistory();
   const chatListData = useSelector((state) => state.chatListReducer);
@@ -208,6 +211,8 @@ const ChatList = ({
     let title = document.getElementById(num).textContent;
     setTitle(title);
     setChatRoomId(Number(num));
+    setRoomDisplay(true);
+    setListDisplay(false);
     console.log(
       '방제받아오기',
       title,
@@ -223,7 +228,7 @@ const ChatList = ({
 
   return (
     <>
-      <ChatListDiv display={display}>
+      <ChatListDiv display={display} listDisplay={listDisplay}>
         <div className="titleDiv">
           <div className="mes_img">
             <img src={chatList_img}></img>
