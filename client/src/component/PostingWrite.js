@@ -187,6 +187,7 @@ const UlDiv = styled.ul`
       margin-top: 18px;
       float: left;
       width: 160px;
+      margin-bottom: 7px;
       @media only screen and (max-width: 430px) {
         margin-top: 0.4em;
       }

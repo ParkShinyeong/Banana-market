@@ -887,7 +887,7 @@ const PostingEditing = () => {
                   type="radio"
                   name="about"
                   value="jointPurchase"
-                  checked={
+                  defaultChecked={
                     post.tradeType === 'jointPurchase' ||
                     post.tradeType === '공구'
                       ? true

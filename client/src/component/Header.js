@@ -11,12 +11,7 @@ import SearchModal from './SearchModal';
 import LoginModal from './LoginModal';
 import MenuModal from './MenuModal';
 
-import person_icon from '../icon/person_icon.svg';
 import logo_svg from '../icon/logo.svg';
-import logo from '../icon/logo.png';
-import login from '../icon/login.png';
-import chat_icon from '../icon/chat_icon.png';
-import menu_icon from '../icon/menu_icon.png';
 import { ReactComponent as PersonIcon } from '../icon/person_icon.svg';
 import { ReactComponent as MenuIcon } from '../icon/menu_icon.svg';
 import { ReactComponent as ChatIcon } from '../icon/chat_icon.svg';

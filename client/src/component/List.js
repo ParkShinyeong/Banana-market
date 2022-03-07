@@ -721,12 +721,9 @@ const List = ({ handleFilterCategory, handleFilterSort }) => {
               key={idx}
               status={el.status}
               onClick={() => {
-                history.push(
-                  setLoginState
-                    ? el.status === true
+                history.push(el.status === true
                       ? `/view/${el.id}`
                       : alert('마감되었습니다.')
-                    : alert('로그인 후 이용 가능합니다.')
                 );
               }}
             >

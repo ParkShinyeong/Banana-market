@@ -60,14 +60,6 @@ const Login_div = styled.div`
       width: 300px;
       box-sizing: border-box;
       margin: 100px auto 0 auto;
-      /* > p.welcome_ment {
-        font-style: 8px;
-        margin-bottom: 10px;
-        opacity: 0;
-        position: relative;
-        transition: all 0.2s linear;
-        animation: ${boxFade} 3s 1s forwards;
-      } */
       > p {
         /* margin-top: 100px; */
         margin-bottom: 40px;

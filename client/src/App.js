@@ -55,14 +55,6 @@ function App(props) {
         if (setUserInfo.type === null) {
           console.log('널이다');
         }
-        if (setUserInfo.type === 'ADMIN') {
-          console.log('어드민이다');
-          dispatch(setAdminLogin());
-          console.log(setUserInfo.type);
-        } else if (setUserInfo.block) {
-          dispatch(setLogout());
-          alert('정지된 유저 입니다!');
-        }
       })
       .catch((err) => {
         dispatch(setLogout());
@@ -76,6 +68,36 @@ function App(props) {
   const handleResponseSuccess = () => {
     isAuthenticated();
   };
+
+  useEffect(() => {
+    const checkAdminBlock = () => {
+      if (setUserInfo.type === 'ADMIN') {
+        console.log('어드민이다');
+        dispatch(setAdminLogin());
+        console.log(setUserInfo.type);
+      } else if (setUserInfo.block) {
+        dispatch(setLogout());
+        alert('정지된 유저 입니다!');
+      }
+    };
+    checkAdminBlock();
+  }, [setUserInfo]);
+
+  useEffect(() => {
+    const checkAdminBlock = () => {
+      if (setUserInfo.type === 'ADMIN') {
+        console.log('어드민이다');
+        dispatch(setAdminLogin());
+        console.log(setUserInfo.type);
+      } else if (setUserInfo.block) {
+        dispatch(setLogout());
+        alert('정지된 유저 입니다!');
+      }
+    };
+    checkAdminBlock();
+  }, [setLoginState]);
+
+  dispatch(setAdminLogout());
 
   // google social login 시 authorization code를 server에 보내준다.
   const getGoogleAccessToken = async (authorizationCode) => {

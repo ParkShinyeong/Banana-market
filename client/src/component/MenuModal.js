@@ -14,7 +14,6 @@ import {
 
 import logo_svg from '../icon/logo.svg';
 import shopping_cart from '../icon/shopping_cart.svg';
-import logo from '../icon/logo.png';
 import close from '../icon/close.png';
 import next_icon from '../icon/next_icon.png';
 import { ReactComponent as WritingIcon } from '../icon/writing_icon.svg';

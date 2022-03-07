@@ -520,7 +520,12 @@ const PostDetail = ({ chatListDetail, handleClick }) => {
         ) : (
           <div
             className="btn btn_css"
-            z
+            onClick={() => {
+              // handleClick();
+              joinChat(post.id);
+              history.push('/chat/0');
+            }}
+            className="btn btn_css"
           >
             참여하기
           </div>
