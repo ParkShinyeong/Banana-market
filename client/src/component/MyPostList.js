@@ -236,10 +236,10 @@ const ListDeTail = styled.div`
   min-height: 150px;
   border-radius: 10px;
   cursor: ${(props) => (props.status ? 'pointer' : '')};
-  background-color: ${(props) => (props.status ? '#fafafa' : '#9eadba')};
+  background-color: ${(props) => (props.status ? '#fafafa' : '#dde3e7')};
   /* background-color: ${(props) => (props.status ? '#fafafa' : '#9eadba')}; */
   box-shadow: ${(props) => (props.status ? '2px 4px 7px 1px #00000012;' : '')};
-  opacity: ${(props) => (props.status ? '' : '0.3')};
+  opacity: ${(props) => (props.status ? '' : '0.2')};
   transition: all 0.2s linear;
   &:hover {
     position: relative;
@@ -313,7 +313,7 @@ const ListDeTail = styled.div`
           text-align: center;
           display: inline-block;
           width: 38px;
-          font-size: 14px;
+          font-size: 13px;
           border-radius: 3px;
           font-weight: 600;
           line-height: 19px;
@@ -326,7 +326,7 @@ const ListDeTail = styled.div`
           text-align: center;
           display: inline-block;
           width: 38px;
-          font-size: 14px;
+          font-size: 13px;
           border-radius: 3px;
           font-weight: 600;
           line-height: 19px;
@@ -356,16 +356,16 @@ const ListDeTail = styled.div`
           font-size: 16px;
           margin-top: 6px;
          
-          >span.share{
+          /* >span.share{
             display: inline-block;
             font-size: 14px;
             border-radius: 3px;
             font-weight: 600;
-            padding: 0 5px;
+            padding: 0 5px; */
             /* background-color: #f4f4f4; */
-            border: 1px solid #99b376;
+            /* border: 1px solid #99b376;
             color:#99b376;
-          }
+          } */
           >span.title_text{
             font-size: 17px;
             font-weight: 500;
@@ -436,7 +436,7 @@ const MyPostList = ({ handleChangeCheckBox }) => {
     <>
       <ListHeader>
         <div className="title">나의 마켓
-          <span>나의 참여한 거래 목록</span>
+          {/* <span>나의 참여한 거래 목록</span> */}
         </div>
         <div className="Check_wrapper" >
           <input type="checkbox" id="ownPost"  onClick={handleChangeCheckBox} />

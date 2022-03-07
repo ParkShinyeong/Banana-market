@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-import check_icon from "../icon/check_icon.png";
-import error_icon from "../icon/error_icon.png";
+import { ReactComponent as CheckIcon1 } from '../icon/check_icon.svg';
+import { ReactComponent as CheckIcon2 } from '../icon/check_icon.svg';
 import { useSelector, useDispatch } from 'react-redux'; 
 import { setLogin, setLogout, setUpdateUserInfo} from "../redux/actions/actions";
-
+import key_icon from '../icon/key_icon.png'
 import axios from "axios";
 
 axios.defaults.withCredentials = true;
@@ -28,8 +28,8 @@ const Wrapper = styled.div`
     box-sizing: border-box;
     margin: 0 auto;
     border-radius: 8px;
-    /* background: #fff; */
-    border: 1px solid #8b8585;
+    text-align: center;
+    padding-bottom: 30px;
     > .close {
       width: 28px;
       height: 28px;
@@ -38,26 +38,38 @@ const Wrapper = styled.div`
       font-size: 30px;
       cursor: pointer;
     }
+    > img.icon {
+        padding: 30px 0 0 25px;
+      }
     > .title {
-      margin-top: 30px;
-      width: 260px;
+      padding-top: 25px;
+      font-size: 20px;
+      color: #444;
     }
     > .password_change_box {
       width: 260px;
-      box-sizing: border-box;
+      box-sizing: content-box;
       margin: 30px auto 0 auto;
-      > span {
-        display: inline-block;
-        font-size: 13px;
-        line-height: 21px;
-        margin-bottom: 15px;
-      }
+     > span {
+      position: relative;
+      top: 8px;
+      font-size: 12px;
+      display: block;
+      width: 100%;
+      text-align: left;
+      color: #a1d026;
+      /* background-color: green; */
+    }
+    > span.error_message {
+      color: #ffc004;
+    }
       > .password {
-        width: 236px;
-        height: 35px;
+        margin-top: 20px;
+        /* width: 236px;
+        height: 45px;
         margin: 5px auto 15px auto;
         border: 1px solid rgb(0, 0, 0, 0.3);
-        outline: 0;
+        outline: 0; */
       }
       > img{
         width: 16px;
@@ -72,22 +84,23 @@ const Wrapper = styled.div`
 
       > .confirm_btn {
         width: 257px;
-        height: 40px;
+        height: 45px;
         /* border-radius: 3px; */
-        margin: 15px auto 30px auto;
-        box-sizing: border-box;
+        margin: 30px auto;
         cursor: pointer;
-        line-height: 40px;
+        line-height: 45px;
         border-radius: 20px;
         font-weight: 600;
         font-size: 15px;
         text-align: center;
         cursor: pointer;
+        border-radius:  10px;
         background-color: rgb(0, 0, 0, 0.1);
         color: rgb(0, 0, 0, 0.5);
         &:hover {
-          background-color: #ffd900;
-          color: #2b2828;
+          border: 0px;
+          background-color:#a1d026;
+          color:#fbfff1;
         }
       }
     }
@@ -95,20 +108,30 @@ const Wrapper = styled.div`
   @media only screen and (max-width: 768px){
     > .password_modal {
       width: 100%;
-      height: 100vh;
-      background-color: white;
-      position: relative;
-      top: 0;
-      box-sizing: border-box;
-      margin: 0 auto;
-      border-radius: 0px;
-      /* background: #fff; */
-      border: 1px solid #8b8585;
-      .title {
-        margin-top: 170px;
-      }
+        height: 100vh;
+        background-color: white;
+        position: relative;
+        top: 0;
+        box-sizing: border-box;
+        margin: 0 auto;
+        border-radius: 0px;
+        /* background: #fff; */
+        border: 1px solid #8b8585;
+        > img.icon {
+          padding: 80px 0 0 25px;
+        }
     }
   }
+
+  svg {
+      width: 16px;
+      height: 16px;
+      margin-top: 12px;
+      display: block;
+      float: right;
+      position: relative;
+      top:20px;
+    }
 `;
 
 const PasswordModal = ({ setIsPasswordModalOn }) => {
@@ -198,32 +221,50 @@ const PasswordModal = ({ setIsPasswordModalOn }) => {
         <div className="close" onClick={() => setIsPasswordModalOn(false)}>
           &times;
         </div>
+        <img className='icon' src={key_icon}/>
         <div className='title'>비밀번호 변경</div>
         <div className="password_change_box">
           <input
-            className="password"
-            // type="password"
+            className="password input_css2"
+            type="password"
             placeholder="현재 비밀번호를 입력해주세요."
             onChange={handleChangePassword}
-          />{checkPassword ? <div></div>
-          : <img className='icon' src={error_icon}/>}
+          />
+          {/* {checkPassword ? (
+                  <CheckIcon1 stroke="#a1d026"></CheckIcon1>
+                ) : (
+                  <CheckIcon1 stroke="#ececec"></CheckIcon1>
+                )}
+                 */}
           <input
-            className="password new_password"
+            className="password new_password input_css2"
             type="password"
             placeholder="새로운 비밀번호를 입력해주세요."
             onChange={handleChangeNewPassword}
           />
-          <img className='icon' src={checkNewPassword ? check_icon : error_icon}/>
-          {checkNewPassword ?
-          <span className = 'correct_notice'>사용가능한 비밀번호 입니다.</span>
-          : <span className = 'error_notice'>비밀번호는 영문, 숫자, 특수문자를 모두 포함해 6~12자 입니다.</span>}
+         {checkNewPassword ? (
+                  <CheckIcon1 stroke="#a1d026"></CheckIcon1>
+                ) : (
+                  <CheckIcon1 stroke="#ececec"></CheckIcon1>
+                )}
+              {checkNewPassword ? (
+                <span>사용가능한 비밀번호 입니다.</span>
+              ) : (
+                <span className="error_message">
+                  비밀번호는 영문, 숫자, 특수문자를 모두 포함해 6~12자 입니다.
+                </span>
+              )}
           <input
-            className="password"
+            className="password input_css2"
             type="password"
             placeholder="새 비밀번호를 확인해주세요."
             onChange={handleChangeRePassword}
           />
-          <img className='icon' src={checkReNewPassword ? check_icon : error_icon}/>
+          {checkReNewPassword ? (
+                  <CheckIcon2 stroke="#a1d026"></CheckIcon2>
+                ) : (
+                  <CheckIcon2 stroke="#ececec"></CheckIcon2>
+                )}
           <div className="confirm_btn" onClick={handleChangeConfirmPassword}>
             확인
           </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useHistory, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import chatList_img from '../icon/file.png';
 import axios from 'axios';
 // socket 연결
 import io from 'socket.io-client';
@@ -10,93 +11,73 @@ const chatroom = `${process.env.REACT_APP_API_HTTP_URL}/chatroom`;
 const socket = io.connect(chatroom, {
   withCredentials: true,
 });
+// FFF7CF
 
 const ChatListDiv = styled.div`
   /* min-width: 360px; */
+  border: solid 1px #ebebeb;
+  /* border-radius: 10px; */
   min-height: 710px;
-  border: 1px solid #c4c4c4;
+  /* border-right: none; */
+  /* border-radius: 10px 0px 0px 10px; */
+
+  /* background-color: #fffbe3; */
+  /* border: solid 1px #ebebeb; */
+
   @media screen and (max-width: 767px) {
     border: none;
-    height: 742px;
-    display: none;
+
+    display: ${(props) => props.display};
   }
-  > p {
-    height: 35px;
-    margin: 15px 15px 0 15px;
-    border-bottom: 1px solid #c4c4c4;
-    /* background-color: beige; */
+
+  .titleDiv {
+    height: 55px;
+    box-shadow: 0 4px 4px -4px #ebebeb;
+    div {
+      float: left;
+    }
+    .mes_img {
+      height: 20px;
+      width: 20px;
+      margin-top: 18px;
+      margin-left: 15px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .title {
+      margin-top: 20px;
+      margin-left: 15px;
+    }
   }
 
   .chatList_div {
-    height: 645px;
+    height: 635px;
     overflow-y: scroll;
+    margin-top: 10px;
+
     -ms-overflow-style: none;
     scrollbar-width: none;
     @media screen and (max-width: 767px) {
       width: 100%;
-      height: 670px;
+      height: 630px;
     }
     > .grid {
       width: 360px;
+      border-radius: 5px;
+      /* background-color: #f2eccb; */
       display: grid;
       grid-template-columns: auto;
-      padding: 15px 0 15px 15px;
-      grid-gap: 15px;
-      /* background-color: violet; */
+      /* background-color: #f2e49b; */
+      margin: 0 auto;
+      grid-gap: 5px;
+      padding: 5px;
+      /* background-color: #fff7cf; */
+
       @media screen and (max-width: 767px) {
         width: 96%;
-      }
-      > li {
-        box-shadow: 2px 2px 3px 2px #ddd;
-        min-height: 85px;
-        /* border: 1px solid #ddd; */
-        border-radius: 10px;
-        cursor: pointer;
-
-        .in_grid {
-          display: grid;
-          grid-template-columns: 60px auto;
-          grid-gap: 15px;
-          padding: 10px;
-          margin-top: 3px;
-          .profile_img {
-            display: block;
-            height: 60px;
-            background-color: #ddd;
-            border-radius: 10px;
-            img {
-              width: 100%;
-              height: 60px;
-              border-radius: 10px;
-            }
-          }
-          .chat_info {
-            min-height: 60px;
-            border-radius: 10px;
-            position: relative;
-
-            .chat_title {
-              width: 100%;
-              font-size: 14px;
-              margin-top: 8px;
-            }
-            .content {
-              width: 67%;
-              font-size: 12px;
-              margin-top: 15px;
-              color: #555;
-            }
-            .created_At {
-              font-size: 11px;
-              position: relative;
-              bottom: 15%;
-              color: #9d9c9c;
-              text-align: right;
-              position: absolute;
-              right: 0;
-            }
-          }
-        }
+        /* padding-top: 20px; */
       }
     }
   }
@@ -107,29 +88,84 @@ const ChatListDiv = styled.div`
     } */
   }
 `;
-const ChatRoomDiv = styled.div`
-  max-width: 1200px;
-  width: 100%;
-  height: 710px;
-  position: absolute;
-  /* background-color: whitesmoke; */
-  z-index: 1;
-  @media screen and (max-width: 1200px) {
-    /* margin: 80px auto 30px auto; */
+const ListDiv = styled.div`
+  /* border: solid 1px #eeeeee; */
+  /* background-color: ${(props) => props.color}; */
+  /* background-color: #fffff8; */
+  min-height: 85px;
+  border: solid 1px #ebebeb;
+  /* border: 1px solid #ddd; */
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
 
-    width: 95%;
-  }
-  @media screen and (max-width: 768px) {
-    /* margin: 80px auto 30px auto; */
-    width: 100%;
+  .in_grid {
+    display: grid;
+    grid-template-columns: 60px auto;
+    grid-gap: 15px;
+    padding: 10px;
+    margin-top: 2px;
+
+    .profile_img {
+      display: block;
+      height: 60px;
+      background-color: #ddd;
+      border-radius: 10px;
+      img {
+        width: 100%;
+        height: 60px;
+        border-radius: 10px;
+      }
+    }
+    .chat_info {
+      min-height: 60px;
+      border-radius: 10px;
+      position: relative;
+
+      .chat_title {
+        width: 245px;
+        font-size: 14px;
+        margin-top: 7px;
+        overflow: hidden;
+      }
+      .content {
+        width: 200px;
+        height: 12px;
+        overflow: hidden;
+        overflow: hidden;
+        font-size: 12px;
+        margin-top: 15px;
+        color: #555;
+      }
+      .created_At {
+        font-size: 11px;
+        position: relative;
+        bottom: 15%;
+        color: #9d9c9c;
+        text-align: right;
+        position: absolute;
+        right: 0;
+      }
+    }
   }
 `;
 
-const ChatList = ({ chatRoomId, setChatRoomId, setTitle }) => {
+const ChatList = ({
+  chatRoomId,
+  setChatRoomId,
+  setTitle,
+  display,
+  onClick2,
+}) => {
   const history = useHistory();
   const chatListData = useSelector((state) => state.chatListReducer);
   // console.log(chatListData);
   const dispatch = useDispatch();
+
+  const [color, setColor] = useState('#fff');
+  const colorChange = () => {
+    color === '#fff' ? setColor('#FFF7CF') : setColor('#fff');
+  };
 
   function getToday() {
     let date = new Date();
@@ -145,22 +181,21 @@ const ChatList = ({ chatRoomId, setChatRoomId, setTitle }) => {
       return '';
     } else {
       let resultDate = String(date).split(' ')[0];
-      let resultTime = String(date).split(' ')[1];
+      let resultTime = String(date).split(' ')[1].split(':')[0];
+      let resultMin = String(date).split(' ')[1].split(':')[1];
+
       if (resultDate === today) {
-        if (resultTime.split(':')[0] > 12) {
+        if (Number(resultTime) > 11) {
           return (
             '오후 ' +
-            (Number(resultTime.split(':')[0]) - 12) +
+            (Number(resultTime) === 12
+              ? String(resultTime)
+              : String(Number(resultTime) - 12)) +
             ':' +
-            Number(resultTime.split(':')[1])
+            String(resultMin)
           );
         } else {
-          return (
-            '오전 ' +
-            Number(resultTime.split(':')[0]) +
-            ':' +
-            Number(resultTime.split(':')[1])
-          );
+          return '오전 ' + String(resultTime) + ':' + String(resultMin);
         }
       } else {
         return resultDate;
@@ -188,8 +223,14 @@ const ChatList = ({ chatRoomId, setChatRoomId, setTitle }) => {
 
   return (
     <>
-      <ChatListDiv>
-        <p>채팅 리스트</p>
+      <ChatListDiv display={display}>
+        <div className="titleDiv">
+          <div className="mes_img">
+            <img src={chatList_img}></img>
+          </div>
+          <div className="title">메시지</div>
+        </div>
+
         <div className="chatList_div">
           {chatListData.length === 0 ? (
             <p style={{ textAlign: 'center', lineHeight: '645px' }}>
@@ -198,17 +239,19 @@ const ChatList = ({ chatRoomId, setChatRoomId, setTitle }) => {
           ) : (
             <ul className="grid">
               {chatListData.map((el, idx) => (
-                <li
+                <ListDiv
                   key={idx}
                   // onClick={() => {
                   //   setChatRoom(true);
                   // }}
-                  // onClick={() => {
-                  //   onClick2();
-                  // }}
+                  // color={color}
 
+                  onClick={
+                    handleClickChatRoom
+                    // onClick2();
+                  }
                   data-value={el.articleId}
-                  onClick={handleClickChatRoom}
+                  // onClick={handleClickChatRoom}
                 >
                   <ul className="in_grid" data-value={el.articleId}>
                     <li className="profile_img" data-value={el.articleId}>
@@ -233,7 +276,7 @@ const ChatList = ({ chatRoomId, setChatRoomId, setTitle }) => {
                       </ul>
                     </li>
                   </ul>
-                </li>
+                </ListDiv>
               ))}
             </ul>
           )}

@@ -97,9 +97,9 @@ const Wrapper = styled.div`
           margin-right: 10px;
           padding: 10px 14px;
           border-radius: 10px;
-          background-color: #ffffca;
-          border: 1px solid #f0f0a2;
-          color: #b9b83c;
+          background-color: #f1f2f3;
+          /* border: 1px solid #f0f0a2; */
+          color: #a5b2bf;
           font-weight: 400;
           float: left;
           &:hover{

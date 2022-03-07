@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'; 
+
 import axios from 'axios';
 import {
   setLogin,
@@ -11,11 +12,11 @@ import {
   setUserInfoNull,
 } from '../redux/actions/actions';
 
-import logo_svg from "../icon/logo.svg";
-import shopping_cart from "../icon/shopping_cart.svg";
-import logo from "../icon/logo.png";
-import close from "../icon/close.png";
-import next_icon from "../icon/next_icon.png";
+import logo_svg from '../icon/logo.svg';
+import shopping_cart from '../icon/shopping_cart.svg';
+import logo from '../icon/logo.png';
+import close from '../icon/close.png';
+import next_icon from '../icon/next_icon.png';
 import { ReactComponent as WritingIcon } from '../icon/writing_icon.svg';
 import { ReactComponent as NextIcon } from '../icon/next_icon.svg';
 import { ReactComponent as CartIcon } from '../icon/cart_icon.svg';
@@ -40,7 +41,32 @@ const MenuModalArea = styled.div`
   }
 `;
 
+
+const  moveIn = keyframes` {
+  0% {
+    margin-right:-770px;
+  }
+  100% {
+    margin-right: 0px;
+  }
+}`;
+
+
+const  moveOut = keyframes` {
+  0% {
+    margin-right: 0px;
+  }
+  100% {
+    margin-right:-770px;
+  }
+}`;
+
 const ModalWrapper = styled.div`
+  @media only screen and (max-width: 1200px) {
+    margin-right:-770px;
+    animation: ${moveIn} 0.15s forwards;
+  }
+  box-shadow: 0px 5px 8px #00000012;
   width: 100%;
   height: 100%;
   /* height: 50px; */
@@ -53,15 +79,16 @@ const ModalWrapper = styled.div`
     margin-top: 10px;
     position: relative;
     line-height: 30px;
-    div.name_text{
+    div.name_text {
       font-size: 22px;
-      color: #343434;
+      color: #3e3e3e;
       display:flex;
-      @media only screen and (max-width: 430px) {
-        font-size: 1em;
+      @media only screen and (max-width: 450px) {
+        font-size: 0.95em;
+
       }
 
-      >div.logout_btn{
+      > div.logout_btn {
         padding: 0 10px;
         margin-top: 15px;
         margin-left: auto;
@@ -74,7 +101,7 @@ const ModalWrapper = styled.div`
         font-size: 14px;
         font-weight: 400;
       }
-      >div.login_btn{
+      > div.login_btn {
         padding: 0 10px;
         margin-top: 15px;
         margin-left: auto;
@@ -87,7 +114,7 @@ const ModalWrapper = styled.div`
         font-size: 14px;
         font-weight: 400;
       }
-      div.signup_btn{
+      div.signup_btn {
         padding: 0 10px;
         margin-top: 15px;
         margin-right: 30px;
@@ -100,32 +127,33 @@ const ModalWrapper = styled.div`
         font-size: 14px;
         font-weight: 300;
       }
-      >div{
+      > div {
         font-weight: 600;
         display: inline-block;
         width: auto;
         > span.text {
           margin: 0 4px;
           position: relative;
-          bottom: 0px;
+          bottom: -4px;
         }
         > span.login_ment {
+          
         }
-        > span.underline{
+        > span.underline {
           display: block;
           width: 100%;
-          height: 15px;
+          height: 10px;
           position: relative;
-          top:30px;
+          top:34px;
           background-color:#ffecba;
         }
       }
       > p{
-        padding-left: 5px;
+        padding-left: 2px;
         padding-top: 14px;
       }
     }
-    >div.top_box_btn{
+    > div.top_box_btn {
       width: 50px;
       height: 10px;
       float: left;
@@ -140,10 +168,10 @@ const ModalWrapper = styled.div`
     padding: 30px 0;
     margin-bottom: 8px;
     background-color: #fffff6;
-    box-shadow:1px 1px 8px 5px #f0f0bc57;
-    display:flex;
+    box-shadow: 1px 1px 8px 5px #f0f0bc57;
+    display: flex;
     svg {
-      width:40px;
+      width: 40px;
       margin-left: 30px;
       @media only screen and (max-width: 430px) {
         margin-left: 23px;
@@ -155,24 +183,23 @@ const ModalWrapper = styled.div`
       margin-left: auto;
       margin-right: 15px;
       > svg {
-      width:15px;
-      margin-left: 20px;
+        width: 15px;
+        margin-left: 20px;
       }
     }
-    
-    >div.menu_text_box{
+
+    > div.menu_text_box {
       width: 230px;
       p {
         padding-left: 30px;
         @media only screen and (max-width: 430px) {
           padding-left: 20px;
-          }
+        }
         &.title {
           letter-spacing: 1px;
           font-weight: 600;
           font-size: 18px;
           color: #303030;
-          
         }
         &.text {
           padding-top: 12px;
@@ -183,12 +210,12 @@ const ModalWrapper = styled.div`
       }
     }
   }
-  .mypage_btn{
+  .mypage_btn {
     padding: 25px 0;
     /* margin-bottom: 8px;
     background-color: #fffff6;
     box-shadow:1px 1px 8px 5px #f0f0bc57; */
-    display:flex;
+    display: flex;
     margin-top: 20px;
     height: 60px;
     border-radius: 10px;
@@ -196,13 +223,13 @@ const ModalWrapper = styled.div`
     padding: 10px 0 10px 0;
     background-color: #f0f0a2;
     svg {
-      width:30px;
+      width: 30px;
       margin-left: 33px;
       @media only screen and (max-width: 430px) {
         margin-left: 26px;
       }
     }
-    >div.menu_text_box{
+    > div.menu_text_box {
       width: 230px;
       height: auto;
       p {
@@ -215,7 +242,7 @@ const ModalWrapper = styled.div`
           letter-spacing: 1px;
           font-weight: 600;
           font-size: 16px;
-          color:#797938;
+          color: #797938;
         }
       }
     }
@@ -225,12 +252,11 @@ const ModalWrapper = styled.div`
       margin-left: auto;
       margin-right: 15px;
       > svg {
-      width:15px;
-      margin-left: 20px;
+        width: 15px;
+        margin-left: 20px;
       }
     }
   }
-
 
   @media only screen and (min-width: ${BREAK_POINT_TABLET}px) {
     width: 450px;
@@ -302,15 +328,15 @@ const ModalBack = styled.div`
   /* background-color: red; */
 `;
 
-const MenuModal = ({ setMenuModal, setLoginModal}) => {
+const MenuModal = ({ setMenuModal, setLoginModal }) => {
   const history = useHistory();
   let dispatch = useDispatch();
-  let setLoginState = useSelector((state) => state.setLoginReducer); 
+  let setLoginState = useSelector((state) => state.setLoginReducer);
   let setUserInfo = useSelector((state) => state.setUserInfoReducer);
   // 모달 밖 영역 클릭 시 모달 창 닫히는 함수
   const handleClickClose = (e) => {
     setMenuModal(false);
-    console.log("누름");
+    console.log('누름');
   };
 
   // 로그아웃 버튼 클릭 시 진행되는 함수
@@ -353,29 +379,60 @@ const MenuModal = ({ setMenuModal, setLoginModal}) => {
             </div>
           </HeaderBox>
           <div className="announcement">
-            {setLoginState ? 
-              <div className='name_text'>
+            {setLoginState ? (
+              <div className="name_text">
                 <div>
-                  <span className='underline'></span>
-                  <span className='text'>{setUserInfo.nickName}</span>
+                  <span className="underline"></span>
+                  <span className="text">{setUserInfo.nickName}</span>
                 </div>
-                  <p>님 환영합니다.</p>
-                  <div className='logout_btn' onClick={() => {setMenuModal(false); handleChangeAuth();}}> 로그아웃 </div>
+                <p>님 환영합니다.</p>
+                <div
+                  className="logout_btn"
+                  onClick={() => {
+                    setMenuModal(false);
+                    handleChangeAuth();
+                  }}
+                >
+                  {' '}
+                  로그아웃{' '}
+                </div>
               </div>
-            :<div className='name_text'>
-              <div>
-                <span className='underline'></span>
-                <span className='text login_ment'>로그인 후 이용해주세요</span>
+            ) : (
+              <div className="name_text">
+                <div>
+                  <span className="underline"></span>
+                  <span className="text login_ment">
+                    로그인 후 이용해주세요
+                  </span>
+                </div>
+                <div
+                  className="login_btn"
+                  onClick={() => {
+                    setMenuModal(false);
+                    setLoginModal(true);
+                  }}
+                >
+                  {' '}
+                  로그인{' '}
+                </div>
+                <Link
+                  to="/signup"
+                  onClick={() => {
+                    setMenuModal(false);
+                  }}
+                >
+                  <div
+                    className="signup_btn"
+                    onClick={() => {
+                      setMenuModal(false);
+                    }}
+                  >
+                    {' '}
+                    회원가입{' '}
+                  </div>
+                </Link>
               </div>
-              <div className='login_btn' onClick={() => {setMenuModal(false);  setLoginModal(true);}}> 로그인 </div>
-              <Link
-              to="/signup"
-              onClick={() => {
-                setMenuModal(false);
-              }}
-              ><div className='signup_btn' onClick={() => {setMenuModal(false);}}> 회원가입 </div></Link>
-            </div>
-            }
+            )}
           </div>
           <ul className="menulist">
             <Link
@@ -385,12 +442,17 @@ const MenuModal = ({ setMenuModal, setLoginModal}) => {
               }}
             >
               <li className="menu">
-                <WritingIcon className='icon_img' stroke='#4d4c54'></WritingIcon>  
-                <div className='menu_text_box'>
-                  <p className='title'>게시글 작성  </p>
-                  <p className='text'> 바나나마켓을 열어보세요. </p>
+                <WritingIcon
+                  className="icon_img"
+                  stroke="#4d4c54"
+                ></WritingIcon>
+                <div className="menu_text_box">
+                  <p className="title">게시글 작성 </p>
+                  <p className="text"> 바나나마켓을 열어보세요. </p>
                 </div>
-                <div className='icon_direction'><NextIcon stroke=' #4d4c54'></NextIcon></div>
+                <div className="icon_direction">
+                  <NextIcon stroke=" #4d4c54"></NextIcon>
+                </div>
               </li>
             </Link>
             <Link
@@ -400,41 +462,54 @@ const MenuModal = ({ setMenuModal, setLoginModal}) => {
               }}
             >
               <li className="menu">
-                <CartIcon className='icon_img' stroke='#4d4c54'></CartIcon>  
-                  <div className='menu_text_box'>
-                    <p className='title'>나의 마켓</p>
-                    <p className='text'>참여한 내용을 확인합니다. </p>
-                  </div>
-                  <div className='icon_direction'><NextIcon stroke=' #4d4c54'></NextIcon></div>
+                <CartIcon className="icon_img" stroke="#4d4c54"></CartIcon>
+                <div className="menu_text_box">
+                  <p className="title">나의 마켓</p>
+                  <p className="text">참여한 내용을 확인합니다. </p>
+                </div>
+                <div className="icon_direction">
+                  <NextIcon stroke=" #4d4c54"></NextIcon>
+                </div>
               </li>
             </Link>
-            <Link to={setLoginState ? "/mypage" : "/nullpage"} >
+            <Link to={setLoginState ? '/mypage' : '/nullpage'}>
               <li
                 className="menu"
                 onClick={() => {
                   setMenuModal(false);
                 }}
               >
-                <PersonIcon className='icon_img' stroke='#feb763' stroke-width= '1.2px' ></PersonIcon>  
-                  <div className='menu_text_box'>
-                    <p className='title '>마이페이지  </p>
-                    <p className='text'> 바나나마켓 회원정보입니다. </p>
-                  </div>
-                  <div className='icon_direction'><NextIcon stroke=' #4d4c54'></NextIcon></div>
+                <PersonIcon
+                  className="icon_img"
+                  stroke="#feb763"
+                  strokeWidth="1.2px"
+                ></PersonIcon>
+                <div className="menu_text_box">
+                  <p className="title ">마이페이지 </p>
+                  <p className="text"> 바나나마켓 회원정보입니다. </p>
+                </div>
+                <div className="icon_direction">
+                  <NextIcon stroke=" #4d4c54"></NextIcon>
+                </div>
               </li>
             </Link>
-            <Link to='/' >
+            <Link to="/">
               <li
                 className="mypage_btn"
                 onClick={() => {
                   setMenuModal(false);
                 }}
               >
-                <BananaIcon PersonIcon className='icon_img icon_mypage' ></BananaIcon>  
-                  <div className='menu_text_box'>
-                    <p className='title title_mypage'>바나나마켓 이용방법</p>
-                  </div>
-                  <div className='icon_direction'><NextIcon stroke='#797938'></NextIcon></div>
+                <BananaIcon
+                  PersonIcon
+                  className="icon_img icon_mypage"
+                ></BananaIcon>
+                <div className="menu_text_box">
+                  <p className="title title_mypage">바나나마켓 이용방법</p>
+                </div>
+                <div className="icon_direction">
+                  <NextIcon stroke="#797938"></NextIcon>
+                </div>
               </li>
             </Link>
           </ul>

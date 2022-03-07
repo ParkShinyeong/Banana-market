@@ -4,7 +4,7 @@
         stroke='current'
         stroke-linecap=' round'
         stroke-linejoin=' round'
-        stroke-width=' 0.8px'>
+        stroke-width='current'>
   <polyline points="5 10 9 5.5 5 1"/>
   </g>
 </svg>

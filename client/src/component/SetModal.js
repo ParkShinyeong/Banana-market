@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useHistory, useParams, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { ResetChatList } from '../redux/actions/actions';
+import alert_btn from '../icon/alarm.png';
 import axios from 'axios';
 
 // socket 연결
@@ -15,19 +16,22 @@ const socket = io.connect(chatroom, {
 
 const SetModalDiv = styled.div`
   width: 330px;
-  height: 712px;
-  background-color: darksalmon;
+  height: 710px;
+  background-color: #f4f4f4;
   position: absolute;
   right: 0%;
   z-index: 1;
   @media screen and (max-width: 768px) {
-    height: 745px;
+    height: 737px;
   }
   .close {
     width: 28px;
     height: 28px;
-    color: #4c4c4c;
+    color: #c1c1c1;
     float: right;
+    font-weight: 600;
+    margin-top: 8px;
+    margin-right: 8px;
     font-size: 30px;
     cursor: pointer;
   }
@@ -38,7 +42,7 @@ const SetModalDiv = styled.div`
     position: relative;
     border-bottom: 1px solid #ddd;
     @media screen and (max-width: 768px) {
-      margin: 110px auto 0 auto;
+      margin: 100px auto 0 auto;
     }
     p {
       position: absolute;
@@ -49,6 +53,7 @@ const SetModalDiv = styled.div`
       position: absolute;
       bottom: 30%;
       line-height: 1.5;
+      color: #929292;
     }
   }
   .user_list {
@@ -57,6 +62,8 @@ const SetModalDiv = styled.div`
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    border-radius: 10px;
+    background-color: #fff;
     margin: 50px auto;
     @media screen and (max-width: 768px) {
       height: 258px;
@@ -65,6 +72,7 @@ const SetModalDiv = styled.div`
       display: grid;
       grid-template-columns: auto;
       padding: 10px;
+
       grid-gap: 10px;
       li {
         min-height: 40px;
@@ -76,23 +84,38 @@ const SetModalDiv = styled.div`
           width: 40px;
           height: 40px;
           border-radius: 50px;
-          background-color: #ddd;
         }
         .user_id {
           margin-left: 10px;
-          width: 99px;
+          width: 100px;
+          overflow: hidden;
           height: 40px;
-          font-size: 15px;
+          font-size: 14px;
           color: #2b2828;
           line-height: 40px;
         }
         .declaration_btn {
-          width: 25px;
-          height: 25px;
-          background-color: antiquewhite;
-          margin-top: 7px;
-          margin-left: 8px;
+          width: 22px;
+          height: 22px;
+          margin-top: 9px;
+          margin-left: 7px;
           cursor: pointer;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .declaration_btn2 {
+          width: 22px;
+          height: 22px;
+          margin-top: 9px;
+          cursor: pointer;
+          float: right;
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
         }
         .user_out {
           height: 25px;
@@ -117,8 +140,9 @@ const SetModalDiv = styled.div`
   .exit {
     width: 250px;
     height: 45px;
-    border: 1px solid #2b2828;
+    background-color: #ffe763;
     box-sizing: border-box;
+    border-radius: 10px;
     margin: 50px auto 0 auto;
     /* border-radius: 10px; */
     cursor: pointer;
@@ -136,7 +160,6 @@ const ToggleContainer = styled.div`
   top: 0;
   right: 0%;
   cursor: pointer;
-
   > .toggle-container {
     width: 50px;
     height: 24px;
@@ -152,7 +175,6 @@ const ToggleContainer = styled.div`
       background-position: left bottom;
     }
   }
-
   > .toggle-circle {
     position: absolute;
     top: 3px;
@@ -199,7 +221,7 @@ const ExitModalDiv = styled.div`
       text-align: center;
       width: 220px;
       margin: 30px auto 15px auto;
-      font-weight: 600;
+      font-weight: 500;
     }
     .exit_info {
       width: 200px;
@@ -210,7 +232,6 @@ const ExitModalDiv = styled.div`
       line-height: 1.5;
       color: #4c4c4c;
     }
-
     .exit_btn {
       width: 210px;
       height: 30px;
@@ -333,6 +354,7 @@ const SetModal = ({
   let hostId = participant.filter((person) => {
     return person.isHost === '1';
   });
+
   // console.log('참가자', participant[0].isHost);
   if (hostId.length === 0) {
     hostId = 1;
@@ -407,7 +429,9 @@ const SetModal = ({
                     onClick={() => {
                       setDeclaration(true);
                     }}
-                  ></div>
+                  >
+                    <img src={alert_btn}></img>
+                  </div>
                   {el.isHost === '1' ? null : (
                     <>
                       <div
@@ -433,11 +457,13 @@ const SetModal = ({
                   </div>
                   <div className="user_id">{el.name}</div>
                   <div
-                    className="declaration_btn"
+                    className="declaration_btn2"
                     onClick={() => {
                       setDeclaration(true);
                     }}
-                  ></div>
+                  >
+                    <img src={alert_btn}></img>
+                  </div>
                 </li>
               ))}
             </ul>

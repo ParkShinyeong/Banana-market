@@ -113,78 +113,28 @@ const Wrapper = styled.div`
 `;
 
 
-const SecessionModal = ({ setIsSecessionModalOn }) => {
+const DeleteModal = ({ setIsDeleteModalOn, postDelete, postId}) => {
   const history = useHistory();
-  let setLoginState = useSelector((state) => state.setLoginReducer); 
-  let setUserInfo = useSelector((state) => state.setUserInfoReducer); 
-  let dispatch = useDispatch();
-
-  // useState로 Input 값 받기
-  let [inputPassword, setInputPassword] = useState('');
-  
-  //Input 값 받는 함수
-  const handleChangePassword = (e) => {
-    setInputPassword(e.target.value);
-	};
-
-  //탈퇴하기 버튼 클리 시 진행되는 함수 
-  const handleClickSecession = (e) => {
-    // axios : 비밀번호 확인 후 탈퇴 진행
-    if(inputPassword !== '') {
-      axios
-        .post(
-          `${process.env.REACT_APP_API_URL}/login`,
-          {
-            email: setUserInfo.email,
-            password: inputPassword,
-          },
-          {
-            withCredentials: true,
-          }
-        )
-        .then((data) => {
-          axios
-            .delete(
-              `${process.env.REACT_APP_API_URL}/users/info`,
-              {
-                withCredentials: true,
-              }
-            )
-          .then((data) => {
-            alert('성공적으로 탈퇴되었습니다.')
-            dispatch(setLogout())
-            setIsSecessionModalOn(false);
-            history.push('/');
-          })
-          .catch((err) => {
-            alert('탈퇴되지 않았습니다.')
-            console.log(err);
-          });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+  const deleteConfirm = () => {
+    postDelete(postId); 
+    setIsDeleteModalOn(false); 
+    history.push('/mylist');
   }
 
   return (
     <Wrapper>
       <div className="secession_modal">
-        <div className="close" onClick={() => setIsSecessionModalOn(false)}>
+        <div className="close" onClick={setIsDeleteModalOn(false)}>
           &times;
         </div>
         <img className='icon' src={warning}/>
-        <div className='title'>회원 탈퇴</div>
+        <div className='title'>게시글 삭제</div>
         <div className="secession_box">
-          <input
-            className="password input_css"
-            // type="password"
-            placeholder="비밀번호를 입력해주세요."
-            onChange={handleChangePassword}
-          />
-          <span>사이트 내의 회원님의 모든 정보가 삭제됩니다.</span>
-          <div className="confirm_btn" onClick={handleClickSecession}>
-            탈퇴하기
+          <span>정말 글을 삭제하시겠습니까? </span>
+          <span>확인을 누르면 글이 삭제됩니다.</span>
+          <div className="confirm_btn" 
+          onClick={deleteConfirm()}>
+            삭제하기
           </div>
         </div>
       </div>
@@ -192,4 +142,4 @@ const SecessionModal = ({ setIsSecessionModalOn }) => {
   );
 };
 
-export default SecessionModal;
+export default DeleteModal;
