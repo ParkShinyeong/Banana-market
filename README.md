@@ -1,4 +1,12 @@
 # INTRODUCTION
+[👉 Banana-market 웹사이트 바로가기](https://bananamarket.tk)
+|| guest login |
+|--|---|
+|id|banana|
+|pw|banana| 
+
+
+
 ![](https://media.discordapp.net/attachments/932979492937420820/941171341141344296/logo_.png)
 <br /><br />
 ‘바’로 만나서
@@ -11,11 +19,7 @@
 바나나마켓의 공동 장바구니로 필요한 물품, 필요한 양만큼 구매해요
 
 <br></br>
-[👉 Banana-market 웹사이트 바로가기](https://bananamarket.tk)
-|| guest login |
-|--|---|
-|id|banana|
-|pw|banana|   
+  
 
 <br /><br />
 # MAIN FEATURES
@@ -40,9 +44,7 @@ front-end <br />
 ![Redux](https://img.shields.io/badge/Redux-764ABC?style=flat-square&logo=Redux&logoColor=black) 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=black) 
 ![StyledComponents](https://img.shields.io/badge/StyledComponents-DB7093?style=flat-square&logo=StyledComponents&logoColor=black) 
-<br />
-bootstrap
-<br />
+
 
 back-end <br />
 ![js](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=black) 
@@ -56,18 +58,21 @@ back-end <br />
 <br />
 <img src="https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=Socket.io&logoColor=white">
 <img src="https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white">
+![PM2](https://img.shields.io/badge/PM2-9400D3?style=flat-square&logo=PM2&logoColor=black)
+![Nodemailer](https://img.shields.io/badge/NodeMailer-339933?style=flat-square&logo=NodeMailer&logoColor=black)
 
 dev-ops <br />
 ![aws](https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=AmazonAWS&logoColor=FF9900) 
-![s3](https://img.shields.io/badge/S3-569A31?style=flat-square&logo=AmazonS3&logoColor=black) 
-![ec2](https://img.shields.io/badge/EC2-FF9900?style=flat-square&logo=AmazonEC2&logoColor=black) 
-![rds](https://img.shields.io/badge/RDS-0078D2?style=flat-square&logo=AmazonRDS&logoColor=black) 
-![ELB](https://img.shields.io/badge/ELB-3CB371?style=flat-square&logo=AmazonELB&logoColor=black) 
-![CouldFront](https://img.shields.io/badge/CouldFront-48D1CC?style=flat-square&logo=AmazonCouldFront&logoColor=black) 
-![Route53](https://img.shields.io/badge/Route53-9400D3?style=flat-square&logo=AmazonRoute53&logoColor=black)
-<br />
-ACM, pipeline, PM2, Node mailer
-<br />
+![s3](https://img.shields.io/badge/S3-569A31?style=flat-square&logo=AmazonAWS&logoColor=black) 
+![ec2](https://img.shields.io/badge/EC2-FF9900?style=flat-square&logo=AmazonAWS&logoColor=black) 
+![rds](https://img.shields.io/badge/RDS-0078D2?style=flat-square&logo=AmazonAWS&logoColor=black) 
+![ELB](https://img.shields.io/badge/ELB-3CB371?style=flat-square&logo=AmazonAWS&logoColor=black) 
+![CouldFront](https://img.shields.io/badge/CouldFront-48D1CC?style=flat-square&logo=AmazonAWS&logoColor=black) 
+![Route53](https://img.shields.io/badge/Route53-9400D3?style=flat-square&logo=AmazonAWS&logoColor=black)
+![ACM](https://img.shields.io/badge/ACM-232F3E?style=flat-square&logo=AmazonAWS&logoColor=white)
+![CodePipeline](https://img.shields.io/badge/CodePipeline-FF9900?style=flat-square&logo=AmazonAWS&logoColor=black)
+
+
 
 community   <br />
 ![discord](https://img.shields.io/badge/discord-5865F2?style=flat-square&logo=Discord&logoColor=black) 
@@ -75,8 +80,11 @@ community   <br />
 ![github](https://img.shields.io/badge/Github-181717?style=flat-square&logo=Github&logoColor=white) 
 ![apple](https://img.shields.io/badge/MacOS-000000?style=flat-square&logo=Apple&logoColor=white) 
 ![ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=flat-square&logo=Ubuntu&logoColor=black) 
+![Gitbook](https://img.shields.io/badge/Gitbook-E95420?style=flat-square&logo=Gitbook&logoColor=black) 
+![Figma](https://img.shields.io/badge/Figma-9932CC?style=flat-square&logo=Figma&logoColor=black) 
+![dbdiagram](https://img.shields.io/badge/DB%20Diagram-1E90FF?style=flat-square&logo=DBDiagram&logoColor=black) 
+![notion](https://img.shields.io/badge/notion-F0E68C?style=flat-square&logo=notion&logoColor=black) 
 <br />
-Gitbook, Figma, dbdiagram, notion
 
 <br /><br />
 # DEVELOPERS
