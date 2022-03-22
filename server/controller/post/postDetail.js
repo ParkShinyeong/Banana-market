@@ -1,16 +1,18 @@
 const { User, Region, Article, Category } = require('../../models');
 const { checkAccessToken } = require('../tokenFunction');
 
-module.exports = async (req, res) => {
-  let accessTokenData = '';
-  let userId = '';
-  if (req.cookies) {
-    console.log('쿸키');
-    accessTokenData = checkAccessToken(req);
-    userId = accessTokenData.id;
+const getAccessTokenData = (req) => {
+  const guestUserId = 3;
+  if (!req.cookie) {
+    return guestUserId;
+  } else {
+    return checkAccessToken(req).id;
   }
+};
 
-  console.log('userId', userId);
+module.exports = async (req, res) => {
+  const userId = getAccessTokenData(req);
+  console.log('UserId', userId);
 
   const articleId = req.params.articleid;
   if (!articleId) {
@@ -80,12 +82,10 @@ module.exports = async (req, res) => {
   })
     .then((data) => {
       const postData = data.dataValues;
-      const articleRegion = postData.Region;
-      postData['region'] = articleRegion.dataValues.region;
+      postData['region'] = postData.Region.dataValues.region;
       delete postData.Region;
 
-      const category = postData.Category;
-      postData['category'] = category.dataValues.category;
+      postData['category'] = postData.Category.dataValues.category;
       delete postData.Category;
 
       if (postData.tradeType === 'share') {
@@ -94,30 +94,33 @@ module.exports = async (req, res) => {
         postData.tradeType = '공구';
       }
 
-      const user = postData.Users;
-      let sendObj = {};
-      if (!user.length) {
+      if (!postData.Users.length) {
         return res
           .status(404)
           .send({ message: '작성자가 없거나, 존재하지 않는 게시물 입니다' });
       } else {
-        const userData = user[0].dataValues;
+        const userData = postData.Users[0].dataValues;
         userData.region = userData.Region.dataValues.region;
-        delete userData.Region;
         userData.totalTrade = userData.Articles.length;
+        delete userData.Region;
         delete userData.Articles;
-        let writer = userData.UserArticles.dataValues.writerId;
+
+        // 포스트의 작성자가 나인지 확인합니다.
         let isMyPost = false;
-        if (writer === userId) {
+        if (userData.UserArticles.dataValues.writerId === userId) {
           isMyPost = true;
         }
         userData.isMyPost = isMyPost;
         delete userData.UserArticles;
-
-        sendObj['postWriter'] = userData;
         delete postData.Users;
-        sendObj['post'] = postData;
-        res.status(200).send({ data: sendObj, message: 'ok' });
+
+        res.status(200).send({
+          data: {
+            postWriter: userData,
+            post: postData,
+          },
+          message: 'ok',
+        });
       }
     })
     .catch((err) => {
