@@ -113,7 +113,7 @@ module.exports = async (req, res) => {
         userData.isMyPost = isMyPost;
         delete userData.UserArticles;
         delete postData.Users;
-
+        res.header('Access-Control-Allow-Origin', 'https://bananamarket.tk');
         res.status(200).send({
           data: {
             postWriter: userData,
